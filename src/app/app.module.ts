@@ -8,7 +8,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { MainComponent } from './main/main.component';
 import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 import { RecipesComponent } from './recipes/recipes.component';
-
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -17,13 +17,10 @@ import { RecipesComponent } from './recipes/recipes.component';
     RegistrationComponent,
     MainComponent,
     ShoppinglistComponent,
-    RecipesComponent
+    RecipesComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, RouterModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
