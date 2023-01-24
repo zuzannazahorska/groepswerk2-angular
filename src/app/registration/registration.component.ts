@@ -18,10 +18,9 @@ export class RegistrationComponent {
     this.email = '';
   }
 
-  //register() {
-  //console.log('name: ' + this.name);
-  //this.dataService.register(this.name, this.email, this.password);
-  //}
+  registerUser() {
+    this.dataService.registerUser(this.name, this.password, this.email);
+  }
 
   ngOnInit(): void {}
 }

@@ -11,7 +11,7 @@
 
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email</label>
-      <input type="text" class="form-control" [(ngModel)]="email" />
+      <input type="email" class="form-control" [(ngModel)]="email" />
     </div>
 
     <div class="mb-3">
@@ -19,7 +19,13 @@
       <input type="password" class="form-control" [(ngModel)]="password" />
     </div>
 
-    <button type="submit" class="btn btn-primary login">Register</button>
+    <button
+      type="submit"
+      class="btn btn-primary login"
+      (click)="registerUser()"
+    >
+      Register
+    </button>
 
     <a class="register" routerLink="/login" routerLinkActive="active">Login</a>
   </div>
