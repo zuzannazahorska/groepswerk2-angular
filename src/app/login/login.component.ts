@@ -16,9 +16,9 @@ export class LoginComponent {
     this.password = '';
   }
 
-  login() {
-    this.dataService.getUsersFromApi(this.username, this.password);
-  }
+  // login() {
+  //   this.dataService.getUsersFromApi(this.username, this.password);
+  // }
 
   ngOnInit() {}
 }
