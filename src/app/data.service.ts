@@ -7,7 +7,7 @@ import * as bcrypt from 'bcryptjs';
   providedIn: 'root',
 })
 export class DataService {
-  db = 'http://127.0.0.1:8000/api/users';
+  db = 'http://127.0.0.1:8000/api/users/';
   constructor(private router: Router) {}
 
   registerUser(name: string, password: string, email: string) {
@@ -29,5 +29,22 @@ export class DataService {
         alert('Something went wrong.');
       }
     });
+  }
+
+  //log in
+  getUsersFromApi(name: string, password: string) {
+    fetch(this.db + name)
+      .then((response) => response.json())
+      .then((data) => {
+        bcrypt.compare(password, data.password, (err, res) => {
+          if (res) {
+            window.localStorage.setItem('username', name);
+            window.localStorage.setItem('userId', data.id);
+            this.router.navigate(['/main']);
+          } else {
+            alert('Wrong password!');
+          }
+        });
+      });
   }
 }
