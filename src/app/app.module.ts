@@ -9,6 +9,7 @@ import { MainComponent } from './main/main.component';
 import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { RouterModule } from '@angular/router';
     ShoppinglistComponent,
     RecipesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule],
+  imports: [BrowserModule, AppRoutingModule, RouterModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
