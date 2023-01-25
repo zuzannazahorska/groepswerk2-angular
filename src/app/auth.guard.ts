@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  RouterStateSnapshot,
-  UrlTree,
-} from '@angular/router';
+import { CanActivate } from '@angular/router';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 
@@ -14,6 +9,7 @@ import { Router } from '@angular/router';
 export class AuthGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router) {}
 
+  //checks if the user is logged in; if not, access to /main is denied and the user gets navigated back to the login page
   canActivate(): boolean {
     if (this.authService.isLoggedIn()) {
       return true;
