@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,11 @@ export class LoginComponent {
   username: string;
   password: string;
 
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this.username = '';
     this.password = '';
   }
@@ -19,6 +24,5 @@ export class LoginComponent {
   login() {
     this.dataService.getUsersFromApi(this.username, this.password);
   }
-
   ngOnInit() {}
 }
