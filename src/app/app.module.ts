@@ -10,7 +10,8 @@ import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 import { RecipesComponent } from './recipes/recipes.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +21,18 @@ import { FormsModule } from '@angular/forms';
     ShoppinglistComponent,
     RecipesComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, RouterModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    RouterModule,
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      closeButton: true,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { ToastrService } from 'ngx-toastr';
 import * as bcrypt from 'bcryptjs';
 
 @Injectable({
@@ -8,7 +8,7 @@ import * as bcrypt from 'bcryptjs';
 })
 export class DataService {
   db = 'http://127.0.0.1:8000/api/users/';
-  constructor(private router: Router) {}
+  constructor(private router: Router, private toastr: ToastrService) {}
 
   registerUser(name: string, password: string, email: string) {
     fetch(this.db, {
@@ -23,10 +23,10 @@ export class DataService {
       }),
     }).then((response) => {
       if (response.status === 201) {
-        alert('Registration successful');
+        this.toastr.success('Registration successful!');
         this.router.navigate(['/login']);
       } else {
-        alert('Something went wrong.');
+        this.toastr.error('Something went wrong. Please try again.');
       }
     });
   }
@@ -42,7 +42,7 @@ export class DataService {
             window.localStorage.setItem('userId', data.id);
             this.router.navigate(['/main']);
           } else {
-            alert('Wrong password!');
+            this.toastr.error('Wrong password!');
           }
         });
       });
