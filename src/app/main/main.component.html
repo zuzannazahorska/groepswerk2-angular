@@ -1,2 +1,23 @@
 <h1>Welcome to main!</h1>
+
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    {{ search }}
+    <input
+      [(ngModel)]="search"
+      class="form-control me-2"
+      type="search"
+      placeholder="Search"
+      aria-label="Search"
+    />
+    <button
+      class="btn btn-outline-success"
+      type="submit"
+      (click)="getAllIngredients()"
+    >
+      Search
+    </button>
+  </div>
+</nav>
+
 <button class="btn btn-primary" (click)="logOut()">Log out</button>
