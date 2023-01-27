@@ -1,1 +1,64 @@
-<p>recipes works!</p>
+<div class="div">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDarkDropdown"
+        aria-controls="navbarNavDarkDropdown"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <button
+              class="btn btn-dark dropdown-toggle mt-2"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Diets
+            </button>
+
+            <ul class="dropdown-menu dropdown-menu-dark">
+              <li>
+                <a class="dropdown-item" href="#)">Vegan</a>
+              </li>
+              <li><a class="dropdown-item" href="#">Vegetarian</a></li>
+              <li><a class="dropdown-item" href="#">Gluten free</a></li>
+              <li><a class="dropdown-item" href="#">Lactose free</a></li>
+              <li><a class="dropdown-item" href="#">Egg free</a></li>
+              <li><a class="dropdown-item" href="#">Nut free</a></li>
+              <li><a class="dropdown-item" href="#">Keto</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+
+<button class="btn btn-primary mt-2" (click)="getAllrecipes()">
+  Show all recipes
+</button>
+<button class="btn btn-primary mt-2">Show vegan recipes</button>
+
+<div class="div">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let _recipe of _recipes">
+      <div class="row">
+        <div class="col-10">
+          <span class="">{{ _recipe.name }} </span>
+        </div>
+        <div class="col-2">
+          <button class="btn btn-danger me-2" (click)="searchInst(_recipe.id)">
+            Instruction
+          </button>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
