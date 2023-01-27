@@ -57,15 +57,17 @@ export class DataService {
   }
 
   //get all recipes
-  /*getRecipesFromApi() {
-    return fetch('http://127.0.0.1:8000/api/recipes/name').then((response) => {
-      console.log(response);
-      return response.json();
-    });
-  }*/
+  getRecipeDetail(id: string) {
+    return fetch('http://127.0.0.1:8000/api/recipes/instructions/' + id).then(
+      (response) => {
+        console.log(response);
+        return response.json();
+      }
+    );
+  }
 
   /*getVeganFromApi() {
-    return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id,).then(
+    return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(
       (response) => {
         console.log(response);
         return response.json();
