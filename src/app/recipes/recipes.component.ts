@@ -13,6 +13,9 @@ export class RecipesComponent {
 
   _recipes: any = '';
   _recipe: any = '';
+  searchInstr: any;
+  instruction: any;
+  instructions: any;
 
   constructor(private dataService: DataService, private router: Router) {
     this._recipes;
@@ -34,20 +37,13 @@ export class RecipesComponent {
     });
   }
 
-  search(arg0: any): void {
-    console.log(arg0);
-    this._recipes = this._recipes.filter(
-      (_recipe: { name: string }) => _recipe.name.toLowerCase() === arg0
-    );
-    console.log(this._recipes);
+  searchInst(id: string) {
+    console.log(id);
+    this.dataService.getRecipeDetail(id).then((result) => {
+      console.log(result);
+      this.instruction = result;
+    });
   }
-
-  /*search(arg0: any): void {
-    this.searchedRecipes = this._recipes.filter((_recipe: { name: string }) =>
-      _recipe.name.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
-    console.log(this.searchedRecipes.instruction);
-  }*/
 
   /*showVegan() {
     this.dataService.getVeganFromApi().then((result) => {

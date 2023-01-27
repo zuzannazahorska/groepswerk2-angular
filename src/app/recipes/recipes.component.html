@@ -36,13 +36,15 @@
             </ul>
           </li>
         </ul>
-        <button class="btn btn-primary mt-2" (click)="getAllrecipes()">
-          Show all recipes
-        </button>
       </div>
     </div>
   </nav>
 </div>
+
+<button class="btn btn-primary mt-2" (click)="getAllrecipes()">
+  Show all recipes
+</button>
+<button class="btn btn-primary mt-2">Show vegan recipes</button>
 
 <div class="div">
   <ul class="list-group">
@@ -52,7 +54,9 @@
           <span class="">{{ _recipe.name }} </span>
         </div>
         <div class="col-2">
-          <button class="btn btn-danger me-2">Instruction</button>
+          <button class="btn btn-danger me-2" (click)="searchInst(_recipe.id)">
+            Instruction
+          </button>
         </div>
       </div>
     </li>
