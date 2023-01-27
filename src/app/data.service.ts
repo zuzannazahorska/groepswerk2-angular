@@ -36,7 +36,7 @@ export class DataService {
     fetch(this.db + name)
       .then((response) => response.json())
       .then((data) => {
-        bcrypt.compare(password, data.password, (err, res) => {
+        bcrypt.compare(password, data.password, (_err, res) => {
           if (res) {
             window.localStorage.setItem('username', name);
             window.localStorage.setItem('userId', data.id);
@@ -47,4 +47,29 @@ export class DataService {
         });
       });
   }
+
+  //get all recipes
+  getRecipesFromApi() {
+    return fetch('http://127.0.0.1:8000/api/recipes').then((response) => {
+      console.log(response);
+      return response.json();
+    });
+  }
+
+  //get all recipes
+  /*getRecipesFromApi() {
+    return fetch('http://127.0.0.1:8000/api/recipes/name').then((response) => {
+      console.log(response);
+      return response.json();
+    });
+  }*/
+
+  /*getVeganFromApi() {
+    return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id,).then(
+      (response) => {
+        console.log(response);
+        return response.json();
+      }
+    );
+  }*/
 }
