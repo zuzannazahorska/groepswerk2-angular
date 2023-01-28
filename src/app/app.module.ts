@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
@@ -12,6 +12,8 @@ import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+
+
 import { HttpClient } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http';
 @NgModule({
@@ -23,8 +25,10 @@ import { HttpClientModule } from '@angular/common/http';
     ShoppinglistComponent,
     RecipesComponent,
   ],
+
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     RouterModule,
     FormsModule,

@@ -2,12 +2,10 @@
 
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
-    {{ search }}
     <input
       [(ngModel)]="search"
       class="form-control me-2"
       type="search"
-      placeholder="Search"
       aria-label="Search"
     />
     <button
@@ -20,4 +18,21 @@
   </div>
 </nav>
 
-<button class="btn btn-primary" (click)="logOut()">Log out</button>
+<div class="div">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let ingredient of ingredients">
+      {{ ingredient.name }}
+      <button class="btn btn-outline-success m-2">Add to shopping list</button>
+      <button class="btn btn-outline-success">Add to fridge list</button>
+    </li>
+  </ul>
+</div>
+
+<div class="card" style="width: 18rem">
+  <div class="card-header">Fridge list</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+</div>
