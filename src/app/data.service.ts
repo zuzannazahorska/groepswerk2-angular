@@ -56,7 +56,7 @@ export class DataService {
     });
   }
 
-  //get all recipes
+  //get instruction
   getRecipeDetail(id: string) {
     return fetch('http://127.0.0.1:8000/api/recipes/instructions/' + id).then(
       (response) => {
@@ -65,13 +65,31 @@ export class DataService {
       }
     );
   }
-
-  /*getVeganFromApi() {
+  // get recipes based on a specific diet
+  getDietFromApi(search: string) {
+    return fetch('http://127.0.0.1:8000/api/diet_recipe/' + search).then(
+      (response) => {
+        console.log(response);
+        return response.json();
+      }
+    );
+  }
+  // get recipes based on a specific diet
+  getDiet(id: string) {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(
       (response) => {
         console.log(response);
         return response.json();
       }
     );
-  }*/
+  }
+  //get image of recipe
+  getImage(id: string) {
+    return fetch(`http://127.0.0.1:8000/api/recipes/` + id + `/image`).then(
+      (response) => {
+        console.log(response);
+        return response.json();
+      }
+    );
+  }
 }
