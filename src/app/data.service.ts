@@ -2,13 +2,19 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import * as bcrypt from 'bcryptjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
   db = 'http://127.0.0.1:8000/api/users/';
-  constructor(private router: Router, private toastr: ToastrService) {}
+  shoppingList: string[] = [];
+  constructor(
+    private router: Router,
+    private toastr: ToastrService,
+    private http: HttpClient
+  ) {}
 
   registerUser(name: string, password: string, email: string) {
     fetch(this.db, {
@@ -33,18 +39,27 @@ export class DataService {
 
   //log in
   getUsersFromApi(name: string, password: string) {
-    fetch(this.db + name)
-      .then((response) => response.json())
+    this.http
+      .get<{ name: string }>(`${this.db}${name}`)
+      .toPromise()
       .then((data) => {
-        bcrypt.compare(password, data.password, (_err, res) => {
-          if (res) {
-            window.localStorage.setItem('username', name);
-            window.localStorage.setItem('userId', data.id);
-            this.router.navigate(['/main']);
-          } else {
-            this.toastr.error('Wrong password!');
-          }
-        });
+        if (data?.name) {
+          fetch(this.db + name)
+            .then((response) => response.json())
+            .then((data) => {
+              bcrypt.compare(password, data.password, (_err, res) => {
+                if (res) {
+                  window.localStorage.setItem('username', name);
+                  window.localStorage.setItem('userId', data.id);
+                  this.router.navigate(['/main']);
+                } else {
+                  this.toastr.error('Wrong password!');
+                }
+              });
+            });
+        } else {
+          this.toastr.error('Wrong username!');
+        }
       });
   }
 
@@ -56,7 +71,7 @@ export class DataService {
     });
   }
 
-  //get instruction
+  //get all recipes
   getRecipeDetail(id: string) {
     return fetch('http://127.0.0.1:8000/api/recipes/instructions/' + id).then(
       (response) => {
@@ -65,6 +80,16 @@ export class DataService {
       }
     );
   }
+  getIngredientsFromApi(search: any) {
+    return fetch('http://127.0.0.1:8000/api/ingredients/' + search).then(
+      (response) => {
+        console.log(response);
+        return response.json();
+      }
+    );
+  }
+
+  
   // get recipes based on a specific diet
   getDietFromApi(search: string) {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + search).then(
@@ -85,11 +110,25 @@ export class DataService {
   }
   //get image of recipe
   // getImage(id: string) {
-  //   return fetch(`http://127.0.0.1:8000/api/recipes/` + id + `/image`).then(
-  //     (response) => {
-  //       console.log(response);
-  //       return response.json();
-  //     }
-  //   );
+  //   return fetch(`http://127.0.0.1:8000/api/recipes/` + id + `/image`).then(
+  //     (response) => {
+  //       console.log(response);
+  //       return response.json();
+  //     }
+  //   );
   // }
+
+  addToShoppingList(ingredient: string) {
+    console.log('Chosen ingredient is: ', ingredient);
+    this.shoppingList.push(ingredient);
+    console.log(this.shoppingList);
+  }
+  /*getVeganFromApi() {
+    return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(
+      (response) => {
+        console.log(response);
+        return response.json();
+      }
+    );
+  }*/
 }

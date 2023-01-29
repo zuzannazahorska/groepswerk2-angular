@@ -1,2 +1,44 @@
 <h1>Welcome to main!</h1>
-<button class="btn btn-primary" (click)="logOut()">Log out</button>
+
+<nav class="navbar bg-body-tertiary">
+  <div class="container-fluid">
+    <input
+      [(ngModel)]="search"
+      class="form-control me-2"
+      type="search"
+      aria-label="Search"
+    />
+    <button
+      class="btn btn-outline-success"
+      type="submit"
+      (click)="getAllIngredients()"
+    >
+      Search
+    </button>
+  </div>
+</nav>
+
+<div class="div">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let ingredient of ingredients">
+      <span [(ngModel)]="ingredient.name">{{ ingredient.name }}</span>
+
+      <button
+        (click)="addToShoppingList(ingredient.name)"
+        class="btn btn-outline-success m-2"
+      >
+        Add to shopping list
+      </button>
+      <button class="btn btn-outline-success">Add to fridge list</button>
+    </li>
+  </ul>
+</div>
+
+<div class="card" style="width: 18rem">
+  <div class="card-header">Fridge list</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">An item</li>
+    <li class="list-group-item">A second item</li>
+    <li class="list-group-item">A third item</li>
+  </ul>
+</div>
