@@ -87,6 +87,10 @@ export class DataService {
       }
     );
   }
+
+  addToShoppingList(ingredient: string) {
+    console.log('Chosen ingredient is: ', ingredient);
+  }
   /*getVeganFromApi() {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(
       (response) => {
