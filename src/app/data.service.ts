@@ -89,7 +89,6 @@ export class DataService {
     );
   }
 
-  
   // get recipes based on a specific diet
   getDietFromApi(search: string) {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + search).then(
@@ -119,9 +118,12 @@ export class DataService {
   // }
 
   addToShoppingList(ingredient: string) {
-    console.log('Chosen ingredient is: ', ingredient);
     this.shoppingList.push(ingredient);
     console.log(this.shoppingList);
+  }
+
+  getShoppingList(): string[] {
+    return this.shoppingList;
   }
   /*getVeganFromApi() {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(
