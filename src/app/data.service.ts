@@ -9,7 +9,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
   db = 'http://127.0.0.1:8000/api/users/';
+
+  fridgeList: string[] = [];
   shoppingList: string[] = [];
+
   constructor(
     private router: Router,
     private toastr: ToastrService,
@@ -89,6 +92,19 @@ export class DataService {
     );
   }
 
+
+  addToFridgeList(ingredient: string) {
+    this.fridgeList.push(ingredient);
+    console.log(this.fridgeList);
+  }
+
+  getFridgeList(): string[] {
+    return this.fridgeList;
+  }
+}
+
+
+
   // get recipes based on a specific diet
   getDietFromApi(search: string) {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + search).then(
@@ -133,4 +149,3 @@ export class DataService {
       }
     );
   }*/
-}

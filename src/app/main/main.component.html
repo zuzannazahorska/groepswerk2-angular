@@ -23,6 +23,16 @@
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let ingredient of ingredients">
       {{ ingredient.name }}
+
+      <button class="btn btn-outline-success m-2">Add to shopping list</button>
+
+      <button
+        class="btn btn-outline-success"
+        (click)="addToFridgeList(ingredient.name)"
+      >
+        Add to fridge list
+      </button>
+
       <span [(ngModel)]="ingredient.name"></span>
 
       <button
@@ -32,16 +42,20 @@
         Add to shopping list
       </button>
       <button class="btn btn-outline-success">Add to fridge list</button>
+
     </li>
   </ul>
 </div>
 
+<!-- Fridge List -->
+
 <div class="card" style="width: 18rem">
   <div class="card-header">Fridge list</div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
+    <li class="list-group-item">
+      (getAllIngredients)
+      <button class="btn btn-danger">x</button>
+    </li>
   </ul>
   <a routerLink="/shoppinglist" routerLinkActive="active"
     >Go to Shopping List</a
