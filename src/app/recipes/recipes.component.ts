@@ -71,9 +71,9 @@ export class RecipesComponent {
     });
   }
 
-  showImage(id: any) {
-    this.dataService.getImage(id).then((result) => {
-      this.image = result;
-    });
-  }
+  // showImage(id: any) {
+  //   this.dataService.getImage(id).then((result) => {
+  //     this.image = result;
+  //   });
+  // }
 }
