@@ -16,9 +16,22 @@ export class RecipesComponent {
   searchInstr: any;
   instruction: any;
   instructions: any;
+  arg0: string = '';
+  search: any;
+  searchRecip: any;
+  recipeDetail: any;
+  diet: any;
+
+  recipes: any;
+  filteredRecipes: any;
+  image: any;
+  id: any;
+  recipe: any;
 
   constructor(private dataService: DataService, private router: Router) {
     this._recipes;
+    this.recipeDetail;
+    this.filteredRecipes;
   }
 
   /*ngOnInit() {
@@ -37,18 +50,30 @@ export class RecipesComponent {
     });
   }
 
-  searchInst(id: string) {
+  showInst(id: string) {
     console.log(id);
     this.dataService.getRecipeDetail(id).then((result) => {
       console.log(result);
-      this.instruction = result;
+      this.recipeDetail = result;
     });
   }
 
-  /*showVegan() {
-    this.dataService.getVeganFromApi().then((result) => {
+  searchRecipes() {
+    this.dataService.getDietFromApi(this.search).then((result) => {
       console.log(result);
-      this._recipes = result;
     });
-  }*/
+  }
+
+  filterDiet(id: string) {
+    this.dataService.getDiet(id).then((result) => {
+      console.log(result);
+      this.filteredRecipes = result;
+    });
+  }
+
+  // showImage(id: any) {
+  //   this.dataService.getImage(id).then((result) => {
+  //     this.image = result;
+  //   });
+  // }
 }
