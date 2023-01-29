@@ -21,7 +21,8 @@
 <div class="div">
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let ingredient of ingredients">
-      <span [(ngModel)]="ingredient.name">{{ ingredient.name }}</span>
+      {{ ingredient.name }}
+      <span [(ngModel)]="ingredient.name"></span>
 
       <button
         (click)="addToShoppingList(ingredient.name)"
@@ -41,4 +42,7 @@
     <li class="list-group-item">A second item</li>
     <li class="list-group-item">A third item</li>
   </ul>
+  <a routerLink="/shoppinglist" routerLinkActive="active"
+    >Go to Shopping List</a
+  >
 </div>
