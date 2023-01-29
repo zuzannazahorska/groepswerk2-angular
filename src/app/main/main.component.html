@@ -21,8 +21,14 @@
 <div class="div">
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let ingredient of ingredients">
-      {{ ingredient.name }}
-      <button class="btn btn-outline-success m-2">Add to shopping list</button>
+      <span [(ngModel)]="ingredient.name">{{ ingredient.name }}</span>
+
+      <button
+        (click)="addToShoppingList(ingredient.name)"
+        class="btn btn-outline-success m-2"
+      >
+        Add to shopping list
+      </button>
       <button class="btn btn-outline-success">Add to fridge list</button>
     </li>
   </ul>

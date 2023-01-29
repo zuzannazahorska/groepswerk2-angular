@@ -25,6 +25,10 @@ export class MainComponent {
     });
   }
 
+  addToShoppingList(ingredient: string) {
+    this.dataService.addToShoppingList(ingredient);
+  }
+
   ngOnInit() {}
 
   logOut() {
