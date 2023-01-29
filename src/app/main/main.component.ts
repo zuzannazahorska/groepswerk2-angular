@@ -25,6 +25,10 @@ export class MainComponent {
     });
   }
 
+  addToFridgeList(ingredient: string) {
+    this.dataService.addToFridgeList(ingredient);
+  }
+
   ngOnInit() {}
 
   logOut() {
