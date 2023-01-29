@@ -25,8 +25,12 @@ export class MainComponent {
     });
   }
 
+
   addToFridgeList(ingredient: string) {
     this.dataService.addToFridgeList(ingredient);
+}
+  addToShoppingList(ingredient: string) {
+    this.dataService.addToShoppingList(ingredient);
   }
 
   ngOnInit() {}

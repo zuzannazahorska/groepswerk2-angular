@@ -1,0 +1,8 @@
+.container {
+  background-image: url("https://images.pexels.com/photos/616401/pexels-photo-616401.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: cover;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+hr {
+  color: #000;
+}

@@ -1,4 +1,5 @@
 <h1>Welcome to main!</h1>
+<button (click)="logOut()">Log out</button>
 
 <nav class="navbar bg-body-tertiary">
   <div class="container-fluid">
@@ -22,6 +23,7 @@
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let ingredient of ingredients">
       {{ ingredient.name }}
+
       <button class="btn btn-outline-success m-2">Add to shopping list</button>
 
       <button
@@ -30,6 +32,17 @@
       >
         Add to fridge list
       </button>
+
+      <span [(ngModel)]="ingredient.name"></span>
+
+      <button
+        (click)="addToShoppingList(ingredient.name)"
+        class="btn btn-outline-success m-2"
+      >
+        Add to shopping list
+      </button>
+      <button class="btn btn-outline-success">Add to fridge list</button>
+
     </li>
   </ul>
 </div>
@@ -44,4 +57,7 @@
       <button class="btn btn-danger">x</button>
     </li>
   </ul>
+  <a routerLink="/shoppinglist" routerLinkActive="active"
+    >Go to Shopping List</a
+  >
 </div>
