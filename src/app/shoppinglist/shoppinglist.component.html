@@ -1,5 +1,13 @@
 <a routerLink="/main" routerLinkActive="active">Go back</a>
 <h1>Shopping List</h1>
 <ul>
-  <li *ngFor="let ingredient of shoppingList">{{ ingredient }}</li>
+  <li #ingredient *ngFor="let ingredient of shoppingList">
+    {{ ingredient
+    }}<button
+      class="btn btn-danger"
+      (click)="deleteIngredientFromShoppingList(ingredient)"
+    >
+      x
+    </button>
+  </li>
 </ul>
