@@ -92,7 +92,6 @@ export class DataService {
     );
   }
 
-
   addToFridgeList(ingredient: string) {
     this.fridgeList.push(ingredient);
     console.log(this.fridgeList);
@@ -101,9 +100,6 @@ export class DataService {
   getFridgeList(): string[] {
     return this.fridgeList;
   }
-}
-
-
 
   // get recipes based on a specific diet
   getDietFromApi(search: string) {
@@ -149,3 +145,4 @@ export class DataService {
       }
     );
   }*/
+}
