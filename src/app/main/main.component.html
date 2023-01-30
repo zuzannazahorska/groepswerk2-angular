@@ -47,8 +47,18 @@
 <div class="card" style="width: 18rem">
   <div class="card-header">Fridge list</div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">
-      <button class="btn btn-danger">x</button>
+    <li
+      class="list-group-item"
+      #ingredient
+      *ngFor="let ingredient of fridgeList"
+    >
+      {{ ingredient }}
+      <button
+        class="btn btn-danger"
+        (click)="deleteIngredientFridge(ingredient)"
+      >
+        x
+      </button>
     </li>
   </ul>
   <a routerLink="/shoppinglist" routerLinkActive="active"

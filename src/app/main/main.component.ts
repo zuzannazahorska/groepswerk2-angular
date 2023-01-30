@@ -11,6 +11,7 @@ import { DataService } from '../data.service';
 export class MainComponent {
   ingredients: any;
   search: any;
+  fridgeList!: string[];
 
   constructor(
     private authService: AuthService,
@@ -33,6 +34,14 @@ export class MainComponent {
   }
 
   ngOnInit() {}
+
+  deleteIngredientFridge(name: string) {
+    let deleteIngredient = name;
+    this.fridgeList = this.fridgeList.filter(
+      (item) => item !== deleteIngredient
+    );
+    console.log(this.fridgeList);
+  }
 
   logOut() {
     this.authService.logOut();
