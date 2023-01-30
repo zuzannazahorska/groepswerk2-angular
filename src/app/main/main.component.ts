@@ -34,6 +34,7 @@ export class MainComponent {
     this.fridgeList.push(ingredient);
     console.log(this.fridgeList);
     this.toastr.success('Item has been added!');
+    this.search = '';
   }
   addToShoppingList(ingredient: string) {
     this.shoppingList.push(ingredient);
