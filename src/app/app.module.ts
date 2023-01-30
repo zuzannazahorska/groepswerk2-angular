@@ -14,6 +14,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 
+import { RecipeComponent } from './recipes/recipe/recipe.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +24,7 @@ import { HttpClient } from '@angular/common/http';
     MainComponent,
     ShoppinglistComponent,
     RecipesComponent,
+    RecipeComponent,
   ],
 
   imports: [
