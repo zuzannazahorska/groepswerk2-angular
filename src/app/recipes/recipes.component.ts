@@ -34,12 +34,12 @@ export class RecipesComponent {
     this.filteredRecipes;
   }
 
-  /*ngOnInit() {
-    this.dataService.getRecipesFromApi().then((result) => {
-      console.log(result);
-      this._recipes = result;
-    });
-  }*/
+  // ngOnInit() {
+  //   this.dataService.getRecipesFromApi().then((result) => {
+  //     console.log(result);
+  //     this._recipes = result;
+  //   });
+  // }
 
   ngOnInit() {}
 
@@ -55,6 +55,7 @@ export class RecipesComponent {
     this.dataService.getRecipeDetail(id).then((result) => {
       console.log(result);
       this.recipeDetail = result;
+      this.router.navigate(['/recipe', id]);
     });
   }
 

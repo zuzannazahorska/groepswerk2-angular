@@ -74,7 +74,7 @@ export class DataService {
     });
   }
 
-  //get all recipes
+  //get instruction from recipe
   getRecipeDetail(id: string) {
     return fetch('http://127.0.0.1:8000/api/recipes/instructions/' + id).then(
       (response) => {
@@ -83,6 +83,7 @@ export class DataService {
       }
     );
   }
+
   getIngredientsFromApi(search: any) {
     return fetch('http://127.0.0.1:8000/api/ingredients/' + search).then(
       (response) => {
@@ -92,6 +93,8 @@ export class DataService {
     );
   }
 
+
+
   addToFridgeList(ingredient: string) {
     this.fridgeList.push(ingredient);
     console.log(this.fridgeList);
@@ -100,6 +103,7 @@ export class DataService {
   getFridgeList(): string[] {
     return this.fridgeList;
   }
+
 
   // get recipes based on a specific diet
   getDietFromApi(search: string) {
@@ -119,20 +123,22 @@ export class DataService {
       }
     );
   }
+
   //get image of recipe
-  // getImage(id: string) {
+  //  getImage(id: string) {
   //   return fetch(`http://127.0.0.1:8000/api/recipes/` + id + `/image`).then(
   //     (response) => {
   //       console.log(response);
   //       return response.json();
   //     }
-  //   );
+  //  );
   // }
 
   addToShoppingList(ingredient: string) {
     this.shoppingList.push(ingredient);
     console.log(this.shoppingList);
   }
+
 
   getShoppingList(): string[] {
     return this.shoppingList;
@@ -145,4 +151,5 @@ export class DataService {
       }
     );
   }*/
+
 }
