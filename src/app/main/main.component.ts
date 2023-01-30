@@ -23,6 +23,7 @@ export class MainComponent {
     this.fridgeList = [];
     this.shoppingList = [];
   }
+
   getAllIngredients() {
     this.dataService.getIngredientsFromApi(this.search).then((result) => {
       console.log(result);
@@ -32,10 +33,12 @@ export class MainComponent {
   addToFridgeList(ingredient: string) {
     this.fridgeList.push(ingredient);
     console.log(this.fridgeList);
+    this.toastr.success('Item has been added!');
   }
   addToShoppingList(ingredient: string) {
     this.shoppingList.push(ingredient);
     console.log(this.shoppingList);
+    this.toastr.success('Item has been added!');
   }
   ngOnInit() {}
   deleteIngredientFridge(i: number) {
