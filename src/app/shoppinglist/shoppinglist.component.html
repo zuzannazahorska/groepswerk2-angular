@@ -2,7 +2,7 @@
 <h1>Shopping List</h1>
 <ul>
   <li #ingredient *ngFor="let ingredient of shoppingList">
-    {{ ingredient
+    {{ ingredient.name
     }}<button
       class="btn btn-danger"
       (click)="deleteIngredientFromShoppingList(ingredient)"
