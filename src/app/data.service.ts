@@ -10,6 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class DataService {
   db = 'http://127.0.0.1:8000/api/users/';
   shoppingList: string[] = [];
+
   constructor(
     private router: Router,
     private toastr: ToastrService,
@@ -71,7 +72,7 @@ export class DataService {
     });
   }
 
-  //get all recipes
+  //get instruction from recipe
   getRecipeDetail(id: string) {
     return fetch('http://127.0.0.1:8000/api/recipes/instructions/' + id).then(
       (response) => {
@@ -80,6 +81,7 @@ export class DataService {
       }
     );
   }
+
   getIngredientsFromApi(search: any) {
     return fetch('http://127.0.0.1:8000/api/ingredients/' + search).then(
       (response) => {
@@ -89,7 +91,6 @@ export class DataService {
     );
   }
 
-  
   // get recipes based on a specific diet
   getDietFromApi(search: string) {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + search).then(
@@ -108,14 +109,15 @@ export class DataService {
       }
     );
   }
+
   //get image of recipe
-  // getImage(id: string) {
+  //  getImage(id: string) {
   //   return fetch(`http://127.0.0.1:8000/api/recipes/` + id + `/image`).then(
   //     (response) => {
   //       console.log(response);
   //       return response.json();
   //     }
-  //   );
+  //  );
   // }
 
   addToShoppingList(ingredient: string) {
@@ -123,12 +125,4 @@ export class DataService {
     this.shoppingList.push(ingredient);
     console.log(this.shoppingList);
   }
-  /*getVeganFromApi() {
-    return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(
-      (response) => {
-        console.log(response);
-        return response.json();
-      }
-    );
-  }*/
 }

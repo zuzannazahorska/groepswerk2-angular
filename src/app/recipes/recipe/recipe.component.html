@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+      <p *ngFor="let recipe of recipeDetail">
+        <span class="instname"> {{ recipe.name }}</span>
+      </p>
+    </div>
+    <div class="col">
+      <div class="detail">
+        <p *ngFor="let recipe of recipeDetail">
+          <span class="insttekst"> {{ recipe.instruction }}</span>
+        </p>
+      </div>
+      <button class="btn btn-danger me-2" (click)="goBack()">
+        Back to Recipes
+      </button>
+    </div>
+  </div>
+</div>

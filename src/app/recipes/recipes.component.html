@@ -1,67 +1,86 @@
 <div class="container">
-  {{ search }}
-  <input
-    [(ngModel)]="search"
-    type="search"
-    class="form-control"
-    placeholder="search for a recipes"
-  />
-  <button class="btn btn-primary m-3 mt-2" (click)="searchRecipes()">
-    Search
-  </button>
-  <hr />
-
-  <button class="btn btn-primary m-3 mt-2" (click)="getAllrecipes()">
-    Show all recipes
-  </button>
-
-  <button type="button" class="btn btn-link" (click)="filterDiet('vegan')">
-    Vegan
-  </button>
-  <button type="button" class="btn btn-link" (click)="filterDiet('vegetarian')">
-    Vegetarian
-  </button>
-  <button
-    type="button"
-    class="btn btn-link"
-    (click)="filterDiet('lactose free')"
-  >
-    Lactose free
-  </button>
-  <button type="button" class="btn btn-link" (click)="filterDiet('egg free')">
-    Egg free
-  </button>
-  <button type="button" class="btn btn-link" (click)="filterDiet('nut free')">
-    Nut free
-  </button>
-  <button type="button" class="btn btn-link" (click)="filterDiet('keto')">
-    Keto
-  </button>
-  <ul>
-    <li *ngFor="let recipe of recipeDetail">
-      {{ recipe.instruction }}
-    </li>
-  </ul>
-</div>
-<div class="div">
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let _recipe of _recipes">
-      <!-- <img [src]="'result:image/jpeg,' + _recipe.image" alt="Recipe Image" /> -->
-      <div class="row">
-        <div class="col-10">
-          <span class="">{{ _recipe.name }} </span>
-        </div>
-        <div class="col-2">
-          <button class="btn btn-danger me-2" (click)="showInst(_recipe.id)">
-            Instruction
-          </button>
-        </div>
-        <ul>
-          <!-- <li *ngFor="let recipe of filteredRecipes">
-            {{ recipe.name }}
-          </li> -->
-        </ul>
+  <div class="row">
+    <div class="col filterDiet">
+      <button type="button" class="btn btn-link" (click)="filterDiet('vegan')">
+        Vegan
+      </button>
+      <button
+        type="button"
+        class="btn btn-link"
+        (click)="filterDiet('vegetarian')"
+      >
+        Vegetarian
+      </button>
+      <button
+        type="button"
+        class="btn btn-link"
+        (click)="filterDiet('lactose free')"
+      >
+        Lactose free
+      </button>
+      <button
+        type="button"
+        class="btn btn-link"
+        (click)="filterDiet('egg free')"
+      >
+        Egg free
+      </button>
+      <button
+        type="button"
+        class="btn btn-link"
+        (click)="filterDiet('nut free')"
+      >
+        Nut free
+      </button>
+      <button type="button" class="btn btn-link" (click)="filterDiet('keto')">
+        Keto
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="searchbut">
+        <button class="btn btn-primary m-3 mt-2" (click)="getAllrecipes()">
+          Show all recipes
+        </button>
       </div>
-    </li>
-  </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <input
+        [(ngModel)]="search"
+        type="search"
+        class="form-control"
+        placeholder="search for a recipes"
+      />
+      <button class="btn btn-primary mt-2" (click)="searchRecipes()">
+        Search
+      </button>
+    </div>
+  </div>
+
+  <div class="recip">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let _recipe of _recipes">
+        <!-- <img [src]="'result:image/jpeg,' + _recipe.image" alt="Recipe Image" /> -->
+        <div class="row">
+          <div class="col-10">
+            <span class="">{{ _recipe.name }} </span>
+          </div>
+          <div class="col-2">
+            <a [routerLink]="['/recipes', _recipe.id]">Show instruction</a>
+            <!-- <button class="btn btn-danger me-2" (click)="showInst(_recipe.id)">
+            Instruction
+          </button> -->
+          </div>
+          <!-- <ul>
+          <li *ngFor="let recipe of filteredRecipes">
+            {{ recipe.name }}
+          </li>
+        </ul> -->
+        </div>
+      </li>
+    </ul>
+  </div>
 </div>
