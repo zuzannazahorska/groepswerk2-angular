@@ -50,9 +50,9 @@
     <li
       class="list-group-item"
       #ingredient
-      *ngFor="let ingredient of fridgeList"
+      *ngFor="let ingredient of ingredients"
     >
-      {{ ingredient }}
+      {{ ingredient.name }}
       <button
         class="btn btn-danger"
         (click)="deleteIngredientFridge(ingredient)"
