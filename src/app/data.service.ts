@@ -102,7 +102,8 @@ export class DataService {
     return this.fridgeList;
   }
 
-  //get recipes based on a specific diet
+  // get recipes based on a specific diet
+
   getDietFromApi(search: string) {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + search).then(
       (response) => {
@@ -150,6 +151,7 @@ export class DataService {
   getShoppingList(): string[] {
     return this.shoppingList;
   }
+
   /*getVeganFromApi() {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(
       (response) => {

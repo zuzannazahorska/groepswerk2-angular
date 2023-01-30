@@ -36,10 +36,11 @@ export class MainComponent {
   ngOnInit() {}
 
   deleteIngredientFridge(name: string) {
-    let deleteIngredient = name;
+    let ingredientToDelete = name;
     this.fridgeList = this.fridgeList.filter(
-      (item) => item !== deleteIngredient
+      (item) => item !== ingredientToDelete
     );
+
     console.log(this.fridgeList);
   }
 
