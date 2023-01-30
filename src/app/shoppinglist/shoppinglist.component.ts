@@ -7,15 +7,23 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./shoppinglist.component.css'],
 })
 export class ShoppinglistComponent {
-  shoppingList!: string[];
+  shoppingList!: any[];
   constructor(
     private dataService: DataService,
     private toastr: ToastrService
   ) {}
 
   ngOnInit() {
-    this.shoppingList = this.dataService.getShoppingList();
-    console.log(this.shoppingList);
+    const user_id = localStorage.getItem('userId');
+    const list = 'shoppinglist';
+    fetch(`http://127.0.0.1:8000/api/ingredient_user/${user_id}/${list}`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.shoppingList = data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
   deleteIngredientFromShoppingList(name: string) {
