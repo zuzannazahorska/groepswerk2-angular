@@ -52,9 +52,9 @@
         [(ngModel)]="search"
         type="search"
         class="form-control"
-        placeholder="search for a recipes"
+        placeholder="type an ingredient"
       />
-      <button class="btn btn-primary mt-2" (click)="searchRecipes()">
+      <button class="btn btn-primary mt-2" (click)="searchRecipesIngr()">
         Search
       </button>
     </div>
@@ -63,7 +63,7 @@
   <div class="recip">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let _recipe of _recipes">
-        <!-- <img [src]="'result:image/jpeg,' + _recipe.image" alt="Recipe Image" /> -->
+        <img [src]="_recipe.image" alt="Recipe Image" />
         <div class="row">
           <div class="col-10">
             <span class="">{{ _recipe.name }} </span>
