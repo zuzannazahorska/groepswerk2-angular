@@ -52,35 +52,37 @@
         [(ngModel)]="search"
         type="search"
         class="form-control"
-        placeholder="search for a recipes"
+        placeholder="type an ingredient"
       />
-      <button class="btn btn-primary mt-2" (click)="searchRecipes()">
+      <button class="btn btn-primary mt-2" (click)="searchRecipesIngr()">
         Search
       </button>
     </div>
   </div>
-
-  <div class="recip">
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let _recipe of _recipes">
-        <!-- <img [src]="'result:image/jpeg,' + _recipe.image" alt="Recipe Image" /> -->
-        <div class="row">
-          <div class="col-10">
-            <span class="">{{ _recipe.name }} </span>
-          </div>
-          <div class="col-2">
-            <a [routerLink]="['/recipes', _recipe.id]">Show instruction</a>
-            <!-- <button class="btn btn-danger me-2" (click)="showInst(_recipe.id)">
-            Instruction
-          </button> -->
-          </div>
-          <!-- <ul>
-          <li *ngFor="let recipe of filteredRecipes">
-            {{ recipe.name }}
+  <div class="row">
+    <div class="col">
+      <ul>
+        <li *ngFor="let recipe of filteredRecipes">
+          {{ recipe.name }}
+        </li>
+      </ul>
+      <div class="container_recipes">
+        <ul class="list-group">
+          <li class="list-group-item" *ngFor="let _recipe of _recipes">
+            <img class="small" [src]="_recipe.image" alt="Recipe Image" />
+            <div class="row">
+              <div class="col-10">
+                <span class="">{{ _recipe.name }} </span>
+              </div>
+              <div class="col-2">
+                <a class="linkcomp" [routerLink]="['/recipes', _recipe.id]"
+                  >Show instruction</a
+                >
+              </div>
+            </div>
           </li>
-        </ul> -->
-        </div>
-      </li>
-    </ul>
+        </ul>
+      </div>
+    </div>
   </div>
 </div>

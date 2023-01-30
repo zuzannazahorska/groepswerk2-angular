@@ -103,6 +103,7 @@ export class DataService {
   }
 
   // get recipes based on a specific diet
+
   getDietFromApi(search: string) {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + search).then(
       (response) => {
@@ -111,6 +112,17 @@ export class DataService {
       }
     );
   }
+
+  // get recipes based on an ingredient
+  getIngrRecipeFromApi(search: string) {
+    return fetch('http://127.0.0.1:8000/api/ingredient_recipe/' + search).then(
+      (response) => {
+        console.log(response);
+        return response.json();
+      }
+    );
+  }
+
   // get recipes based on a specific diet
   getDiet(id: string) {
     return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(

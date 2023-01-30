@@ -59,8 +59,8 @@ export class RecipesComponent {
     });
   }
 
-  searchRecipes() {
-    this.dataService.getDietFromApi(this.search).then((result) => {
+  searchRecipesIngr() {
+    this.dataService.getIngrRecipeFromApi(this.search).then((result) => {
       console.log(result);
     });
   }
