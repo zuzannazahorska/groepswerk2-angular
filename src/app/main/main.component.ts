@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-main',
@@ -12,38 +13,36 @@ export class MainComponent {
   ingredients: any;
   search: any;
   fridgeList!: string[];
-
+  shoppingList!: string[];
   constructor(
     private authService: AuthService,
     private router: Router,
-    private dataService: DataService
-  ) {}
-
+    private dataService: DataService,
+    private toastr: ToastrService
+  ) {
+    this.fridgeList = [];
+    this.shoppingList = [];
+  }
   getAllIngredients() {
     this.dataService.getIngredientsFromApi(this.search).then((result) => {
       console.log(result);
       this.ingredients = result;
     });
   }
-
   addToFridgeList(ingredient: string) {
-    this.dataService.addToFridgeList(ingredient);
-  }
-  addToShoppingList(ingredient: string) {
-    this.dataService.addToShoppingList(ingredient);
-  }
-
-  ngOnInit() {}
-
-  deleteIngredientFridge(name: string) {
-    let ingredientToDelete = name;
-    this.fridgeList = this.fridgeList.filter(
-      (item) => item !== ingredientToDelete
-    );
-
+    this.fridgeList.push(ingredient);
     console.log(this.fridgeList);
   }
-
+  addToShoppingList(ingredient: string) {
+    this.shoppingList.push(ingredient);
+    console.log(this.shoppingList);
+  }
+  ngOnInit() {}
+  deleteIngredientFridge(i: number) {
+    this.fridgeList.splice(i, 1);
+    console.log(this.fridgeList);
+    this.toastr.success('Item has been deleted!');
+  }
   logOut() {
     this.authService.logOut();
     this.router.navigate(['/login']);
