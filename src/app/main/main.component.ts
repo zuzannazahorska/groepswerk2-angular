@@ -13,7 +13,8 @@ export class MainComponent {
   ingredients: any;
   search: any;
   fridgeList!: string[];
-  shoppingList!: string[];
+  shoppingList!: number[];
+  ingredientid: number = 0;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -36,12 +37,27 @@ export class MainComponent {
     this.toastr.success('Item has been added!');
     this.search = '';
   }
-  addToShoppingList(ingredient: string) {
-    this.shoppingList.push(ingredient);
-    console.log(this.shoppingList);
-    this.toastr.success('Item has been added!');
+  addToShoppingList(ingredient_id: number) {
+    this.shoppingList.push(ingredient_id);
+    const user_id = localStorage.getItem('userId');
+    const list = 'shoppinglist';
+    fetch('http://127.0.0.1:8000/api/ingredient_user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: user_id,
+        ingredient_id: ingredient_id,
+        list: list,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
   }
+
   ngOnInit() {}
+
   deleteIngredientFridge(i: number) {
     this.fridgeList.splice(i, 1);
     console.log(this.fridgeList);
