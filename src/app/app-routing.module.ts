@@ -12,11 +12,15 @@ import { RecipeComponent } from './recipes/recipe/recipe.component';
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registration', component: RegistrationComponent },
-  { path: 'recipes', component: RecipesComponent },
-  { path: 'recipes/:id', component: RecipeComponent },
+  { path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard] },
+  { path: 'recipes/:id', component: RecipeComponent, canActivate: [AuthGuard] },
   { path: 'main', component: MainComponent, canActivate: [AuthGuard] },
-  { path: 'shoppinglist', component: ShoppinglistComponent },
-  { path: '', redirectTo: '/recipes', pathMatch: 'full' },
+  {
+    path: 'shoppinglist',
+    component: ShoppinglistComponent,
+    canActivate: [AuthGuard],
+  },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
