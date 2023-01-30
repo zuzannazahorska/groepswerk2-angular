@@ -20,24 +20,32 @@ export class DataService {
   ) {}
 
   registerUser(name: string, password: string, email: string) {
-    fetch(this.db, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        name: name,
-        email: email,
-        password: password,
-      }),
-    }).then((response) => {
-      if (response.status === 201) {
-        this.toastr.success('Registration successful!');
-        this.router.navigate(['/login']);
-      } else {
-        this.toastr.error('Something went wrong. Please try again.');
-      }
-    });
+    fetch(`${this.db}emails/${email}`)
+      .then((response) => response.json())
+      .then((existingUser) => {
+        if (existingUser) {
+          this.toastr.error('Email already exists');
+        } else {
+          fetch(this.db, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              name: name,
+              email: email,
+              password: password,
+            }),
+          }).then((response) => {
+            if (response.status === 201) {
+              this.toastr.success('Registration successful!');
+              this.router.navigate(['/login']);
+            } else {
+              this.toastr.error('Something went wrong. Please try again.');
+            }
+          });
+        }
+      });
   }
 
   //log in
