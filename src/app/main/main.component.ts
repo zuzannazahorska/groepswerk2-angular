@@ -54,6 +54,8 @@ export class MainComponent {
     })
       .then((response) => response.json())
       .then((json) => console.log(json));
+    this.toastr.success('Item has been added!');
+    this.search = '';
   }
 
   ngOnInit() {}

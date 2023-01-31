@@ -1,11 +1,12 @@
 <a routerLink="/main" routerLinkActive="active">Go back</a>
 <h1>Shopping List</h1>
+<button (click)="getShoppingList()">Refresh data</button>
 <ul>
   <li #ingredient *ngFor="let ingredient of shoppingList">
     {{ ingredient.name
     }}<button
       class="btn btn-danger"
-      (click)="deleteIngredientFromShoppingList(ingredient)"
+      (click)="deleteIngredientFromShoppingList(ingredient.id)"
     >
       x
     </button>
