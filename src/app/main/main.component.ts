@@ -40,6 +40,7 @@ export class MainComponent {
     this.shoppingList.push(ingredient);
     console.log(this.shoppingList);
     this.toastr.success('Item has been added!');
+    this.search = '';
   }
   ngOnInit() {}
   deleteIngredientFridge(i: number) {
