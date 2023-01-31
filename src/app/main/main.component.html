@@ -1,61 +1,78 @@
-<h1>Welcome to main!</h1>
-<button (click)="logOut()">Log out</button>
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <input
-      [(ngModel)]="search"
-      class="form-control me-2"
-      type="search"
-      aria-label="Search"
-      (keydown.enter)="getAllIngredients()"
-    /><button
-      class="btn btn-outline-success"
-      type="submit"
-      (click)="getAllIngredients()"
+<div class="my-container-main">
+  <header class="header-main">
+    <a routerLink="/shoppinglist" routerLinkActive="active"
+      >Go to Shopping List</a
     >
-      Search
-    </button>
+    <button (click)="logOut()">Log out</button>
+  </header>
+  <hr />
+  <h1>Welcome to your fridge!</h1>
+  <hr />
+
+  <div class="search-container">
+    <nav class="navbar bg-body-tertiary rounded">
+      <div class="container-fluid">
+        <input
+          [(ngModel)]="search"
+          class="form-control me-2"
+          type="search"
+          placeholder="Search your ingredients here "
+          aria-label="Search"
+          (keydown.enter)="getAllIngredients()"
+        /><button
+          class="btn btn-outline-success search-button d-grid gap-2 col-6 mx-auto"
+          type="submit"
+          (click)="getAllIngredients()"
+        >
+          Search
+        </button>
+      </div>
+    </nav>
   </div>
-</nav>
-<div class="div">
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let ingredient of ingredients">
-      {{ ingredient.name }}
-      <!-- Add to fridge -->
-      <button
-        class="btn btn-outline-success"
-        (click)="addToFridgeList(ingredient.name)"
-      >
-        Add to fridge list
-      </button>
-      <!-- Add to shopping list -->
-      <span [(ngModel)]="ingredient.id"></span
-      ><button
-        (click)="addToShoppingList(ingredient.id)"
-        class="btn btn-outline-success m-2"
-      >
-        Add to shopping list
-      </button>
-    </li>
-  </ul>
-</div>
-<!-- Fridge List -->
-<div class="card" style="width: 18rem">
-  <div class="card-header">Fridge list</div>
-  <button class="btn btn-primary mt-2">Search</button>
-  <ul class="list-group list-group-flush">
-    <li
-      class="list-group-item"
-      #ingredient
-      *ngFor="let fridge of fridgeList; let i = index"
-    >
-      {{ fridge
-      }}<button class="btn btn-danger" (click)="deleteIngredientFridge(i)">
-        x
-      </button>
-    </li>
-  </ul>
-  <a routerLink="/shoppinglist" routerLinkActive="active"
-    >Go to Shopping List</a
-  >
+
+  <div class="ingredient-search mt-3">
+    <div class="container-fluid mb-3">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let ingredient of ingredients">
+          {{ ingredient.name }}
+
+          <!-- Add to fridge -->
+          <button
+            class="btn btn-outline-success m-2"
+            (click)="addToFridgeList(ingredient.name)"
+          >
+            Add to fridge list
+          </button>
+          <!-- Add to shopping list -->
+          <span [(ngModel)]="ingredient.id"></span
+          ><button
+            (click)="addToShoppingList(ingredient.id)"
+            class="btn btn-outline-success m-2"
+          >
+            <i class="fa-solid fa-bag-shopping"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!-- Fridge List -->
+    <div class="card" style="width: 18rem">
+      <div class="card-header">Fridge list</div>
+      <button class="btn btn-primary mt-2">Search</button>
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item"
+          #ingredient
+          *ngFor="let fridge of fridgeList; let i = index"
+        >
+          {{ fridge
+          }}<button
+            class="btn btn-outline-danger"
+            (click)="deleteIngredientFridge(i)"
+          >
+            x
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
