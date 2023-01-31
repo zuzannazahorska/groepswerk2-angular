@@ -11,7 +11,6 @@ export class DataService {
   db = 'http://127.0.0.1:8000/api/users/';
 
   fridgeList: string[] = [];
-  shoppingList: string[] = [];
 
   constructor(
     private router: Router,
@@ -141,12 +140,4 @@ export class DataService {
     );
   }
 
-  addToShoppingList(ingredient: string) {
-    this.shoppingList.push(ingredient);
-    console.log(this.shoppingList);
-  }
-
-  getShoppingList(): string[] {
-    return this.shoppingList;
-  }
 }
