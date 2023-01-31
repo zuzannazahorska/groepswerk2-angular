@@ -141,16 +141,6 @@ export class DataService {
     );
   }
 
-  //get image of recipe
-  //  getImage(id: string) {
-  //   return fetch(`http://127.0.0.1:8000/api/recipes/` + id + `/image`).then(
-  //     (response) => {
-  //       console.log(response);
-  //       return response.json();
-  //     }
-  //  );
-  // }
-
   addToShoppingList(ingredient: string) {
     this.shoppingList.push(ingredient);
     console.log(this.shoppingList);
@@ -159,13 +149,4 @@ export class DataService {
   getShoppingList(): string[] {
     return this.shoppingList;
   }
-
-  /*getVeganFromApi() {
-    return fetch('http://127.0.0.1:8000/api/diet_recipe/' + id).then(
-      (response) => {
-        console.log(response);
-        return response.json();
-      }
-    );
-  }*/
 }

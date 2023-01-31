@@ -1,7 +1,8 @@
-<div class="container">
+<div class="container-fluent">
   <div class="row">
     <div class="col filterDiet">
       <button type="button" class="btn btn-link" (click)="filterDiet('vegan')">
+        <a [routerLink]="['/diet', id]"></a>
         Vegan
       </button>
       <button
@@ -61,28 +62,27 @@
   </div>
   <div class="row">
     <div class="col">
-      <ul>
-        <li *ngFor="let recipe of filteredRecipes">
-          {{ recipe.name }}
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let _recipe of _recipes">
+          <img class="small" [src]="_recipe.image" alt="Recipe Image" />
+
+          {{ _recipe.name }}
+          <button>
+            <a
+              class="btn btn-primary m-1"
+              [routerLink]="['/recipes', _recipe.id]"
+              >Show instruction</a
+            >
+          </button>
         </li>
       </ul>
-      <div class="container_recipes">
-        <ul class="list-group">
-          <li class="list-group-item" *ngFor="let _recipe of _recipes">
-            <img class="small" [src]="_recipe.image" alt="Recipe Image" />
-            <div class="row">
-              <div class="col-10">
-                <span class="">{{ _recipe.name }} </span>
-              </div>
-              <div class="col-2">
-                <a class="linkcomp" [routerLink]="['/recipes', _recipe.id]"
-                  >Show instruction</a
-                >
-              </div>
-            </div>
-          </li>
-        </ul>
-      </div>
     </div>
   </div>
 </div>
+
+<!-- <a class="btn btn-primary m-1" routerLink="open">Open</a>
+  <a class="btn btn-primary m-1" routerLink="done">Done</a>
+</div>
+<div class="container mt-20">
+  <h1 class="text-center text-danger">{{ title }}</h1> -->
+-->
