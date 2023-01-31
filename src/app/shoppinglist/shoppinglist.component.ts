@@ -33,11 +33,9 @@ export class ShoppinglistComponent implements OnInit {
         (json) =>
           (this.shoppingList = this.shoppingList.filter(
             (item) => item.ingredient_id !== ingredient_id
-            
           ))
-          
       );
-      console.log(this.shoppingList)
+    this.toastr.success('Item has been deleted!');
   }
 
   ngOnInit() {
