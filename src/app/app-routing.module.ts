@@ -14,6 +14,11 @@ const routes: Routes = [
   { path: 'registration', component: RegistrationComponent },
   { path: 'recipes', component: RecipesComponent, canActivate: [AuthGuard] },
   { path: 'recipes/:id', component: RecipeComponent, canActivate: [AuthGuard] },
+  {
+    path: 'diet/:id',
+    component: RecipeComponent,
+    canActivate: [AuthGuard],
+  },
   { path: 'main', component: MainComponent, canActivate: [AuthGuard] },
   {
     path: 'shoppinglist',

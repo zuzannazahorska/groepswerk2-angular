@@ -1,0 +1,18 @@
+<div class="row">
+  <div class="col">
+    <p *ngFor="let recipe of filteredRecipes">
+      <span class="instname"> {{ recipe.name }}</span>
+      <img class="big" [src]="recipe.image" alt="Recipe Image" />
+    </p>
+  </div>
+  <div class="col">
+    <div class="detail">
+      <p *ngFor="let recipe of filteredRecipes">
+        <span class="insttekst"> {{ recipe.instruction }}</span>
+      </p>
+    </div>
+    <button class="btn btn-danger me-2" (click)="goBack()">
+      Back to Recipes
+    </button>
+  </div>
+</div>

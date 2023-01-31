@@ -27,6 +27,8 @@ export class RecipesComponent {
   image: any;
   id: any;
   recipe: any;
+  ingrRecipes: any;
+  filteredRecipe: any;
 
   constructor(private dataService: DataService, private router: Router) {
     this._recipes;
@@ -69,12 +71,14 @@ export class RecipesComponent {
     this.dataService.getDiet(id).then((result) => {
       console.log(result);
       this.filteredRecipes = result;
+      this.router.navigate(['/diet', id]);
     });
   }
 
-  // showImage(id: any) {
-  //   this.dataService.getImage(id).then((result) => {
-  //     this.image = result;
+  // filterRecipes() {
+  //   this.dataService.filterRecipesIngr(this.search).then((result) => {
+  //     console.log(result);
+  //     this.ingrRecipes = result;
   //   });
   // }
 }

@@ -15,6 +15,7 @@ export class MainComponent {
   fridgeList!: string[];
   shoppingList!: number[];
   ingredientid: number = 0;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -31,6 +32,7 @@ export class MainComponent {
       this.ingredients = result;
     });
   }
+
   addToFridgeList(ingredient: string) {
     this.fridgeList.push(ingredient);
     console.log(this.fridgeList);
