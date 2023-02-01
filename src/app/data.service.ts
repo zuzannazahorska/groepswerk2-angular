@@ -19,7 +19,7 @@ export class DataService {
   ) {}
 
   registerUser(name: string, password: string, email: string) {
-    fetch(`${this.db}emails/${email}`)
+    fetch(`http://127.0.0.1:8000/api/emails/${email}`)
       .then((response) => response.json())
       .then((existingUser) => {
         if (existingUser) {
@@ -139,5 +139,4 @@ export class DataService {
       }
     );
   }
-
 }
