@@ -1,5 +1,5 @@
 .my-container-main {
-  font-family: "Advent Pro", sans-serif;
+  font-family: "Unbounded", cursive;
 }
 
 .header-main {
@@ -16,4 +16,25 @@
 
 .ingredient {
   text-align: center;
+}
+
+.button-x {
+  float: right;
+}
+
+li.button-forx {
+  text-align: center;
+  color: #50a060;
+}
+
+.btn-logout {
+  float: right;
+}
+
+h1 {
+  color: #c9efc7;
+}
+
+.card-header {
+  color: #50a060;
 }

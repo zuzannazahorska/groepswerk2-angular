@@ -6,12 +6,12 @@
       routerLinkActive="active"
       >Go to <i class="fa-solid fa-bag-shopping"></i
     ></a>
-    <button class="logout btn btn-outline-light" (click)="logOut()">
+    <button class="logout btn btn-outline-light btn-logout" (click)="logOut()">
       Log out
     </button>
   </header>
   <hr />
-  <h1>Welcome to your fridge!</h1>
+  <h1>Welcome to your fridge <img src="\assets\icon-green.png" /></h1>
   <hr />
 
   <div class="search-container">
@@ -67,12 +67,15 @@
       <div class="card-header">Fridge list</div>
       <ul class="list-group list-group-flush">
         <li
-          class="list-group-item"
+          class="list-group-item button-forx"
           #ingredient
           *ngFor="let ingredient of fridgeList; let i = index"
         >
           {{ ingredient.name
-          }}<button class="btn btn-danger" (click)="deleteIngredientFridge(i)">
+          }}<button
+            class="btn btn-danger button-x"
+            (click)="deleteIngredientFridge(i)"
+          >
             x
           </button>
         </li>
