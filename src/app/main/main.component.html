@@ -24,7 +24,7 @@
       <!-- Add to fridge -->
       <button
         class="btn btn-outline-success"
-        (click)="addToFridgeList(ingredient.name)"
+        (click)="addToFridgeList(ingredient.id)"
       >
         Add to fridge list
       </button>
@@ -42,14 +42,14 @@
 <!-- Fridge List -->
 <div class="card" style="width: 18rem">
   <div class="card-header">Fridge list</div>
-
+  <button (click)="getFridgeList()">Refresh data</button>
   <ul class="list-group list-group-flush">
     <li
       class="list-group-item"
       #ingredient
-      *ngFor="let fridge of fridgeList; let i = index"
+      *ngFor="let ingredient of fridgeList; let i = index"
     >
-      {{ fridge
+      {{ ingredient.name
       }}<button class="btn btn-danger" (click)="deleteIngredientFridge(i)">
         x
       </button>
