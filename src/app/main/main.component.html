@@ -1,20 +1,33 @@
-<h1>Welcome to main!</h1>
-<button (click)="logOut()">Log out</button>
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <input
-      [(ngModel)]="search"
-      class="form-control me-2"
-      type="search"
-      aria-label="Search"
-      (keydown.enter)="getAllIngredients()"
-    /><button
-      class="btn btn-outline-success"
-      type="submit"
-      (click)="getAllIngredients()"
+<div class="my-container-main">
+  <header class="header-main">
+    <a routerLink="/shoppinglist" routerLinkActive="active"
+      >Go to Shopping List</a
     >
-      Search
-    </button>
+    <button (click)="logOut()">Log out</button>
+  </header>
+  <hr />
+  <h1>Welcome to your fridge!</h1>
+  <hr />
+
+  <div class="search-container">
+    <nav class="navbar bg-body-tertiary rounded">
+      <div class="container-fluid">
+        <input
+          [(ngModel)]="search"
+          class="form-control me-2"
+          type="search"
+          placeholder="Search your ingredients here "
+          aria-label="Search"
+          (keydown.enter)="getAllIngredients()"
+        /><button
+          class="btn btn-outline-success search-button d-grid gap-2 col-6 mx-auto"
+          type="submit"
+          (click)="getAllIngredients()"
+        >
+          Search
+        </button>
+      </div>
+    </nav>
   </div>
 </nav>
 <div class="div">

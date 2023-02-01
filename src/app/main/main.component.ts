@@ -32,6 +32,7 @@ export class MainComponent {
       this.ingredients = result;
     });
   }
+
   addToFridgeList(ingredient_id: number) {
     this.fridgeList.push(ingredient_id);
     console.log('fridgelist', this.fridgeList);

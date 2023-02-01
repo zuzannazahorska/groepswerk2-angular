@@ -15,6 +15,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { HttpClient } from '@angular/common/http';
 
 import { RecipeComponent } from './recipes/recipe/recipe.component';
+import { DietComponent } from './recipes/diet/diet.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { RecipeComponent } from './recipes/recipe/recipe.component';
     ShoppinglistComponent,
     RecipesComponent,
     RecipeComponent,
+    DietComponent,
   ],
 
   imports: [

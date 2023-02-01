@@ -1,0 +1,25 @@
+.login-container {
+  background-color: white;
+  border-radius: 50px;
+  display: grid;
+  justify-content: center;
+  padding: 20px;
+  margin: auto;
+  width: 50%;
+}
+
+.header {
+  height: 30px;
+}
+
+h1.main {
+  text-align: center;
+}
+
+.form-control {
+  border-radius: 30px;
+}
+
+.login-button {
+  display: flex;
+}
