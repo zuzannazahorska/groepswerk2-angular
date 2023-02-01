@@ -12,10 +12,10 @@ import { ToastrService } from 'ngx-toastr';
 export class MainComponent {
   ingredients: any;
   search: any;
-  fridgeList!: string[];
+  fridgeList!: any[];
   shoppingList!: number[];
   ingredientid: number = 0;
-
+  fridgeListCurrent: any;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -33,12 +33,41 @@ export class MainComponent {
     });
   }
 
-  addToFridgeList(ingredient: string) {
-    this.fridgeList.push(ingredient);
-    console.log(this.fridgeList);
+  addToFridgeList(ingredient_id: number) {
+    this.fridgeList.push(ingredient_id);
+    console.log('fridgelist', this.fridgeList);
+    const user_id = localStorage.getItem('userId');
+    const list = 'fridgeList';
+    fetch('http://127.0.0.1:8000/api/ingredient_user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: user_id,
+        ingredient_id: ingredient_id,
+        list: list,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
     this.toastr.success('Item has been added!');
     this.search = '';
   }
+
+  getFridgeList() {
+    const user_id = localStorage.getItem('userId');
+    const list = 'fridgeList';
+    fetch(`http://127.0.0.1:8000/api/ingredient_user/${user_id}/${list}`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.fridgeList = data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   addToShoppingList(ingredient_id: number) {
     this.shoppingList.push(ingredient_id);
     const user_id = localStorage.getItem('userId');
@@ -58,9 +87,12 @@ export class MainComponent {
       .then((json) => console.log(json));
     this.toastr.success('Item has been added!');
     this.search = '';
+    this.getFridgeList();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getFridgeList();
+  }
 
   deleteIngredientFridge(i: number) {
     this.fridgeList.splice(i, 1);
