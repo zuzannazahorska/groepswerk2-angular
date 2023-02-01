@@ -4,8 +4,8 @@
       class="btn btn-outline-light"
       routerLink="/shoppinglist"
       routerLinkActive="active"
-      >Go to Shopping List</a
-    >
+      >Go to <i class="fa-solid fa-bag-shopping"></i
+    ></a>
     <button class="logout btn btn-outline-light" (click)="logOut()">
       Log out
     </button>
@@ -37,14 +37,17 @@
 
   <div class="div mt-2">
     <ul class="list-group">
-      <li class="list-group-item" *ngFor="let ingredient of ingredients">
+      <li
+        class="list-group-item ingredient"
+        *ngFor="let ingredient of ingredients"
+      >
         {{ ingredient.name }}
         <!-- Add to fridge -->
         <button
           class="btn btn-outline-success"
           (click)="addToFridgeList(ingredient.id)"
         >
-          add to fridge
+          <i class="gg-smart-home-refrigerator"></i>
         </button>
         <!-- Add to shopping list -->
         <span [(ngModel)]="ingredient.id"></span
@@ -60,7 +63,7 @@
 
   <!--  Fridge List -->
   <div class="row">
-    <div class="card" style="width: 18rem">
+    <div class="card mt-2" style="width: 18rem">
       <div class="card-header">Fridge list</div>
       <ul class="list-group list-group-flush">
         <li
