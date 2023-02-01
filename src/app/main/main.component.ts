@@ -16,6 +16,7 @@ export class MainComponent {
   shoppingList!: number[];
   ingredientid: number = 0;
   fridgeListCurrent: any;
+
   constructor(
     private authService: AuthService,
     private router: Router,
