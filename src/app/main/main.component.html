@@ -1,9 +1,14 @@
 <div class="my-container-main">
   <header class="header-main">
-    <a routerLink="/shoppinglist" routerLinkActive="active"
+    <a
+      class="btn btn-outline-light"
+      routerLink="/shoppinglist"
+      routerLinkActive="active"
       >Go to Shopping List</a
     >
-    <button (click)="logOut()">Log out</button>
+    <button class="logout btn btn-outline-light" (click)="logOut()">
+      Log out
+    </button>
   </header>
   <hr />
   <h1>Welcome to your fridge!</h1>
@@ -30,7 +35,7 @@
     </nav>
   </div>
 
-  <div class="div">
+  <div class="div mt-2">
     <ul class="list-group">
       <li class="list-group-item" *ngFor="let ingredient of ingredients">
         {{ ingredient.name }}
@@ -39,7 +44,7 @@
           class="btn btn-outline-success"
           (click)="addToFridgeList(ingredient.id)"
         >
-          Add to fridge list
+          add to fridge
         </button>
         <!-- Add to shopping list -->
         <span [(ngModel)]="ingredient.id"></span
@@ -47,29 +52,35 @@
           (click)="addToShoppingList(ingredient.id)"
           class="btn btn-outline-success m-2"
         >
-          Add to shopping list
+          <i class="fa-solid fa-bag-shopping"></i>
         </button>
       </li>
     </ul>
   </div>
-  <!-- Fridge List -->
-  <div class="card" style="width: 18rem">
-    <div class="card-header">Fridge list</div>
-    <button (click)="getFridgeList()">Refresh data</button>
-    <ul class="list-group list-group-flush">
-      <li
-        class="list-group-item"
-        #ingredient
-        *ngFor="let ingredient of fridgeList; let i = index"
+
+  <!--  Fridge List -->
+  <div class="row">
+    <div class="card" style="width: 18rem">
+      <div class="card-header">Fridge list</div>
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item"
+          #ingredient
+          *ngFor="let ingredient of fridgeList; let i = index"
+        >
+          {{ ingredient.name
+          }}<button class="btn btn-danger" (click)="deleteIngredientFridge(i)">
+            x
+          </button>
+        </li>
+      </ul>
+
+      <button
+        class="btn btn-outline-success refresh-button d-grid gap-2 col-6 mx-auto mt-2"
+        (click)="getFridgeList()"
       >
-        {{ ingredient.name
-        }}<button class="btn btn-danger" (click)="deleteIngredientFridge(i)">
-          x
-        </button>
-      </li>
-    </ul>
-    <a routerLink="/shoppinglist" routerLinkActive="active"
-      >Go to Shopping List</a
-    >
+        Refresh Fridge
+      </button>
+    </div>
   </div>
 </div>
