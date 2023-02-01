@@ -26,14 +26,17 @@ export class MainComponent {
     this.fridgeList = [];
     this.shoppingList = [];
   }
-
   getAllIngredients() {
     this.dataService.getIngredientsFromApi(this.search).then((result) => {
-      console.log(result);
-      this.ingredients = result;
+      if (result.length === 0) {
+        console.log('Ingredient not found');
+        this.toastr.error('Ingredient not found');
+      } else {
+        console.log(result);
+        this.ingredients = result;
+      }
     });
   }
-
   addToFridgeList(ingredient_id: number) {
     this.fridgeList.push(ingredient_id);
     console.log('fridgelist', this.fridgeList);
@@ -52,7 +55,7 @@ export class MainComponent {
     })
       .then((response) => response.json())
       .then((json) => console.log(json));
-    this.toastr.success('Item has been added!');
+    this.toastr.success('Ingredient has been added!');
     this.search = '';
   }
 
@@ -86,7 +89,7 @@ export class MainComponent {
     })
       .then((response) => response.json())
       .then((json) => console.log(json));
-    this.toastr.success('Item has been added!');
+    this.toastr.success('Ingredient has been added!');
     this.search = '';
     this.getFridgeList();
   }
@@ -98,7 +101,7 @@ export class MainComponent {
   deleteIngredientFridge(i: number) {
     this.fridgeList.splice(i, 1);
     console.log(this.fridgeList);
-    this.toastr.success('Item has been deleted!');
+    this.toastr.error('Ingredient has been deleted!');
   }
   logOut() {
     this.authService.logOut();
