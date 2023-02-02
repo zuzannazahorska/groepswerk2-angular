@@ -1,3 +1,4 @@
+<a routerLink="/recipes" routerLinkActive="active">Show all recipes</a>
 <h1>Welcome to main!</h1>
 <button (click)="logOut()">Log out</button>
 <nav class="navbar bg-body-tertiary">
@@ -42,7 +43,7 @@
 <!-- Fridge List -->
 <div class="card" style="width: 18rem">
   <div class="card-header">Fridge list</div>
-  <button class="btn btn-primary mt-2">Search</button>
+  <button class="btn btn-primary mt-2" (click)="filterRecipes()">Search</button>
   <ul class="list-group list-group-flush">
     <li
       class="list-group-item"

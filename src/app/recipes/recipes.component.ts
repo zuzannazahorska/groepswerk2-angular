@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../data.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-recipes',
@@ -29,21 +30,28 @@ export class RecipesComponent {
   recipe: any;
   ingrRecipes: any;
   filteredRecipe: any;
+  name: any | string;
+  diets: any;
+  allIngrRecipes: any;
+  user_id!: string;
+  list_item!: string;
 
-  constructor(private dataService: DataService, private router: Router) {
+  constructor(
+    private dataService: DataService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {
     this._recipes;
     this.recipeDetail;
     this.filteredRecipes;
   }
 
-  // ngOnInit() {
-  //   this.dataService.getRecipesFromApi().then((result) => {
-  //     console.log(result);
-  //     this._recipes = result;
-  //   });
-  // }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.dataService.getRecipesFromApi().then((result) => {
+      console.log(result);
+      this._recipes = result;
+    });
+  }
 
   getAllrecipes() {
     this.dataService.getRecipesFromApi().then((result) => {
@@ -51,7 +59,7 @@ export class RecipesComponent {
       this._recipes = result;
     });
   }
-
+  // show instruction of recipe
   showInst(id: string) {
     console.log(id);
     this.dataService.getRecipeDetail(id).then((result) => {
@@ -60,13 +68,21 @@ export class RecipesComponent {
       this.router.navigate(['/recipe', id]);
     });
   }
-
+  // search all recipes based on particular ingredient
   searchRecipesIngr() {
     this.dataService.getIngrRecipeFromApi(this.search).then((result) => {
       console.log(result);
+      this.ingrRecipes = result;
+      this.router.navigate(['/search', this.search]);
+      if (result.length === 0) {
+        this.toastr.warning('No results found', 'Search');
+      } else {
+        this.toastr.success(`${result.length} results found`, 'Search');
+      }
+      this.search = '';
     });
   }
-
+  //receive prescriptions based on a particular diet
   filterDiet(id: string) {
     this.dataService.getDiet(id).then((result) => {
       console.log(result);
@@ -74,11 +90,4 @@ export class RecipesComponent {
       this.router.navigate(['/diet', id]);
     });
   }
-
-  // filterRecipes() {
-  //   this.dataService.filterRecipesIngr(this.search).then((result) => {
-  //     console.log(result);
-  //     this.ingrRecipes = result;
-  //   });
-  // }
 }

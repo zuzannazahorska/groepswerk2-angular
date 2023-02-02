@@ -8,6 +8,8 @@ import { MainComponent } from './main/main.component';
 import { ShoppinglistComponent } from './shoppinglist/shoppinglist.component';
 import { AuthGuard } from './auth.guard';
 import { RecipeComponent } from './recipes/recipe/recipe.component';
+import { DietComponent } from './recipes/diet/diet.component';
+import { SearchComponent } from './recipes/search/search.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -16,7 +18,12 @@ const routes: Routes = [
   { path: 'recipes/:id', component: RecipeComponent, canActivate: [AuthGuard] },
   {
     path: 'diet/:id',
-    component: RecipeComponent,
+    component: DietComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'search/:name',
+    component: SearchComponent,
     canActivate: [AuthGuard],
   },
   { path: 'main', component: MainComponent, canActivate: [AuthGuard] },

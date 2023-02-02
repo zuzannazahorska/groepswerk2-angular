@@ -16,6 +16,7 @@ import { HttpClient } from '@angular/common/http';
 
 import { RecipeComponent } from './recipes/recipe/recipe.component';
 import { DietComponent } from './recipes/diet/diet.component';
+import { SearchComponent } from './recipes/search/search.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { DietComponent } from './recipes/diet/diet.component';
     RecipesComponent,
     RecipeComponent,
     DietComponent,
+    SearchComponent,
   ],
 
   imports: [

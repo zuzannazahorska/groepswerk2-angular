@@ -140,4 +140,13 @@ export class DataService {
     );
   }
 
+  //get recipes voor based on all frigo ingredients
+  recipesUser(user_id: string, list_item: string) {
+    return fetch(
+      'http://127.0.0.1:8000/api/recipes/' + `${user_id}/${list_item}`
+    ).then((response) => {
+      console.log(response);
+      return response.json();
+    });
+  }
 }
