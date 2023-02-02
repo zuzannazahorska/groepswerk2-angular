@@ -1,88 +1,58 @@
-<div class="container-fluent">
-  <div class="row">
-    <div class="col filterDiet">
-      <button type="button" class="btn btn-link" (click)="filterDiet('vegan')">
-        <a [routerLink]="['/diet', id]"></a>
-        Vegan
-      </button>
-      <button
-        type="button"
-        class="btn btn-link"
-        (click)="filterDiet('vegetarian')"
-      >
-        Vegetarian
-      </button>
-      <button
-        type="button"
-        class="btn btn-link"
-        (click)="filterDiet('lactose free')"
-      >
-        Lactose free
-      </button>
-      <button
-        type="button"
-        class="btn btn-link"
-        (click)="filterDiet('egg free')"
-      >
-        Egg free
-      </button>
-      <button
-        type="button"
-        class="btn btn-link"
-        (click)="filterDiet('nut free')"
-      >
-        Nut free
-      </button>
-      <button type="button" class="btn btn-link" (click)="filterDiet('keto')">
-        Keto
-      </button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <div class="searchbut">
-        <button class="btn btn-primary m-3 mt-2" (click)="getAllrecipes()">
-          Show all recipes
-        </button>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <input
-        [(ngModel)]="search"
-        type="search"
-        class="form-control"
-        placeholder="type an ingredient"
-      />
-      <button class="btn btn-primary mt-2" (click)="searchRecipesIngr()">
-        Search
-      </button>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col">
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let _recipe of _recipes">
-          <img class="small" [src]="_recipe.image" alt="Recipe Image" />
+<header class="header">
+  <nav>
+    <a routerLink="/main" routerLinkActive="active">Back to main page</a>
+  </nav>
+</header>
+<hr />
+<h1>The recipes</h1>
+<div class="navbar">
+  <button type="button" class="btn btn-link" (click)="filterDiet('vegan')">
+    Vegan
+  </button>
 
-          {{ _recipe.name }}
-          <button>
-            <a
-              class="btn btn-primary m-1"
-              [routerLink]="['/recipes', _recipe.id]"
-              >Show instruction</a
-            >
-          </button>
-        </li>
-      </ul>
-    </div>
-  </div>
+  <button type="button" class="btn btn-link" (click)="filterDiet('vegetarian')">
+    Vegetarian
+  </button>
+  <button
+    type="button"
+    class="btn btn-link"
+    (click)="filterDiet('lactose free')"
+  >
+    Lactose free
+  </button>
+  <button type="button" class="btn btn-link" (click)="filterDiet('egg free')">
+    Egg free
+  </button>
+  <button type="button" class="btn btn-link" (click)="filterDiet('nut free')">
+    Nut free
+  </button>
+  <button type="button" class="btn btn-link" (click)="filterDiet('keto')">
+    Keto
+  </button>
 </div>
 
-<!-- <a class="btn btn-primary m-1" routerLink="open">Open</a>
-  <a class="btn btn-primary m-1" routerLink="done">Done</a>
+<div class="container-input">
+  <input
+    [(ngModel)]="search"
+    type="search"
+    class="form-control"
+    placeholder="type an ingredient"
+  />
+  <button class="btn btn-outline-dark mt-2" (click)="searchRecipesIngr()">
+    Search
+  </button>
 </div>
-<div class="container mt-20">
-  <h1 class="text-center text-danger">{{ title }}</h1> -->
--->
+<!-- receive all recipes -->
+<div class="container-content mt-5">
+  <ul>
+    <li *ngFor="let _recipe of _recipes">
+      <img class="small" [src]="_recipe.image" alt="Recipe Image" />
+      <p>{{ _recipe.name }}</p>
+      <a
+        class="btn btn-outline-success m-1"
+        [routerLink]="['/recipes', _recipe.id]"
+        >Show instruction</a
+      >
+    </li>
+  </ul>
+</div>

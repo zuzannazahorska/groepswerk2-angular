@@ -15,7 +15,10 @@ export class MainComponent {
   fridgeList!: any[];
   shoppingList!: number[];
   ingredientid: number = 0;
-  fridgeListCurrent: any;
+  allIngrRecipes: any;
+  list_item!: string;
+  user_id!: string;
+
 
   constructor(
     private authService: AuthService,
@@ -106,5 +109,16 @@ export class MainComponent {
   logOut() {
     this.authService.logOut();
     this.router.navigate(['/login']);
+  }
+
+  // search all recipes based on particular ingredients
+  //search all recipes based on particular ingredients
+  filterRecipes() {
+    this.dataService
+      .recipesUser(this.user_id, this.list_item)
+      .then((result) => {
+        console.log(result);
+        this.allIngrRecipes = result;
+      });
   }
 }
