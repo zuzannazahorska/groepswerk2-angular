@@ -12,12 +12,13 @@ import { ToastrService } from 'ngx-toastr';
 export class MainComponent {
   ingredients: any;
   search: any;
-  fridgeList!: string[];
+  fridgeList!: any[];
   shoppingList!: number[];
   ingredientid: number = 0;
   allIngrRecipes: any;
   list_item!: string;
   user_id!: string;
+
 
   constructor(
     private authService: AuthService,
@@ -28,20 +29,52 @@ export class MainComponent {
     this.fridgeList = [];
     this.shoppingList = [];
   }
-
   getAllIngredients() {
     this.dataService.getIngredientsFromApi(this.search).then((result) => {
-      console.log(result);
-      this.ingredients = result;
+      if (result.length === 0) {
+        console.log('Ingredient not found');
+        this.toastr.error('Ingredient not found');
+      } else {
+        console.log(result);
+        this.ingredients = result;
+      }
     });
   }
-
-  addToFridgeList(ingredient: string) {
-    this.fridgeList.push(ingredient);
-    console.log(this.fridgeList);
-    this.toastr.success('Item has been added!');
+  addToFridgeList(ingredient_id: number) {
+    this.fridgeList.push(ingredient_id);
+    console.log('fridgelist', this.fridgeList);
+    const user_id = localStorage.getItem('userId');
+    const list = 'fridgeList';
+    fetch('http://127.0.0.1:8000/api/ingredient_user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: user_id,
+        ingredient_id: ingredient_id,
+        list: list,
+      }),
+    })
+      .then((response) => response.json())
+      .then((json) => console.log(json));
+    this.toastr.success('Ingredient has been added!');
     this.search = '';
   }
+
+  getFridgeList() {
+    const user_id = localStorage.getItem('userId');
+    const list = 'fridgeList';
+    fetch(`http://127.0.0.1:8000/api/ingredient_user/${user_id}/${list}`)
+      .then((response) => response.json())
+      .then((data) => {
+        this.fridgeList = data;
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   addToShoppingList(ingredient_id: number) {
     this.shoppingList.push(ingredient_id);
     const user_id = localStorage.getItem('userId');
@@ -59,16 +92,19 @@ export class MainComponent {
     })
       .then((response) => response.json())
       .then((json) => console.log(json));
-    this.toastr.success('Item has been added!');
+    this.toastr.success('Ingredient has been added!');
     this.search = '';
+    this.getFridgeList();
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getFridgeList();
+  }
 
   deleteIngredientFridge(i: number) {
     this.fridgeList.splice(i, 1);
     console.log(this.fridgeList);
-    this.toastr.success('Item has been deleted!');
+    this.toastr.error('Ingredient has been deleted!');
   }
   logOut() {
     this.authService.logOut();

@@ -1,8 +1,9 @@
 body {
   background-color: #50a060;
 }
-/* body {
-  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/002/225/458/small/healthy-food-and-cooking-concept-with-a-wooden-spatula-and-vegetables-on-dark-stone-background-free-photo.jpg");
-  background-size: cover;
-  scale: calc();
-} */
+
+/* font exactly the same as the logo*/
+/* @import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200&display=swap"); */
+
+@import url("https://fonts.googleapis.com/css2?family=Advent+Pro:wght@200&family=Unbounded:wght@300&display=swap");
+

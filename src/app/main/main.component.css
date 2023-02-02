@@ -1,0 +1,40 @@
+.my-container-main {
+  font-family: "Unbounded", cursive;
+}
+
+.header-main {
+  height: 30px;
+}
+
+.search-button {
+  margin-top: 20px;
+}
+
+.card-header {
+  text-align: center;
+}
+
+.ingredient {
+  text-align: center;
+}
+
+.button-x {
+  float: right;
+}
+
+li.button-forx {
+  text-align: center;
+  color: #50a060;
+}
+
+.btn-logout {
+  float: right;
+}
+
+h1 {
+  color: #c9efc7;
+}
+
+.card-header {
+  color: #50a060;
+}
