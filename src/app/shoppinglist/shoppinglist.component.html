@@ -1,14 +1,21 @@
-<a routerLink="/main" routerLinkActive="active">Go back</a>
-<h1>Shopping List</h1>
+<a
+  class="btn btn-outline-success btn-back"
+  routerLink="/main"
+  routerLinkActive="active"
+  >Go back</a
+>
+<h1 class="sl-h1">Shopping List</h1>
+<div class="sl-div-ul">
+  <ul class="sl-ul">
+    <li *ngFor="let ingredient of shoppingList" class="sl-ingr">
+      <button
+        class="btn btn-danger sl-del-btn"
+        (click)="deleteIngredientFromShoppingList(ingredient.id)"
+      >
+        x
+      </button>
+      <span>{{ ingredient.name }}</span>
+    </li>
+  </ul>
+</div>
 <button (click)="getShoppingList()">Refresh data</button>
-<ul>
-  <li #ingredient *ngFor="let ingredient of shoppingList">
-    {{ ingredient.name
-    }}<button
-      class="btn btn-danger"
-      (click)="deleteIngredientFromShoppingList(ingredient.id)"
-    >
-      x
-    </button>
-  </li>
-</ul>

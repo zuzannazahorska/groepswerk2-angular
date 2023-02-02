@@ -1,0 +1,35 @@
+@media (max-width: 400px) {
+  .sl-div-ul {
+    grid-template-columns: 1fr;
+  }
+}
+
+.sl-div-ul {
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  background-color: darkseagreen;
+  max-width: 50%;
+  margin: auto;
+}
+.btn-back {
+  margin: 1.5rem 0;
+}
+.sl-h1 {
+  text-align: center;
+  padding: 3rem;
+}
+
+.sl-ul {
+  list-style-type: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+.sl-ingr {
+  margin: 10px;
+}
+.sl-ingr span {
+  flex-grow: 1;
+  text-align: left;
+  padding-left: 1rem;
+}
