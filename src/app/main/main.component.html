@@ -32,18 +32,18 @@
   <hr />
 
   <!-- search bar -->
-
-  <div class="search-container">
-    <nav class="navbar bg-body-tertiary rounded">
-      <div class="container-fluid">
+  <div class="row-mt-5">
+    <div class="col-6">
+      <div class="card">
         <input
           [(ngModel)]="search"
-          class="form-control me-2"
+          class="form-control"
           type="search"
           placeholder="Search your ingredients here "
           aria-label="Search"
           (keydown.enter)="getAllIngredients()"
-        /><button
+        />
+        <button
           class="btn btn-outline-success search-button d-grid gap-2 col-6 mx-auto"
           type="submit"
           (click)="getAllIngredients()"
@@ -51,109 +51,107 @@
           Search
         </button>
       </div>
-    </nav>
-  </div>
-  <!-- Result ingredient -->
-  <div class="div mt-2">
-    <ul class="list-group">
-      <li
-        class="list-group-item ingredient"
-        *ngFor="let ingredient of ingredients"
-      >
-        {{ ingredient.name }}
-        <!-- Add to fridge -->
-        <button
-          class="btn btn-outline-success"
-          (click)="addToFridgeList(ingredient.id)"
+    </div>
+    <div class="col-6">
+      <ul class="list-group">
+        <li
+          class="list-group-item ingredient"
+          *ngFor="let ingredient of ingredients"
         >
-          <i class="gg-smart-home-refrigerator"></i>
-        </button>
-        <!-- Add to shopping list -->
-        <span [(ngModel)]="ingredient.id"></span
-        ><button
-          (click)="addToShoppingList(ingredient.id)"
-          class="btn btn-outline-success m-2"
-        >
-          <i class="fa-solid fa-bag-shopping"></i>
-        </button>
-      </li>
-    </ul>
-  </div>
+          {{ ingredient.name }}
+          <!-- Add to fridge -->
+          <button
+            class="btn btn-outline-success gap-2 d-md-flex justify-content-md-end"
+            (click)="addToFridgeList(ingredient.id)"
+          >
+            <i class="gg-smart-home-refrigerator"></i>
+          </button>
+          <!-- Add to shopping list -->
+          <span [(ngModel)]="ingredient.id"></span
+          ><button
+            (click)="addToShoppingList(ingredient.id)"
+            class="btn btn-outline-success gap-2 d-md-flex justify-content-md-end"
+          >
+            <i class="fa-solid fa-bag-shopping"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+    <!-- fridge List -->
 
-  <!-- fridge List -->
-
-  <div class="row mt-5">
-    <div class="col-12">
-      <div class="card">
-        <div class="card-header">Fridge list</div>
+    <div class="row mt-5">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">Fridge list</div>
+        </div>
+      </div>
+      <div class="col-6">
+        <ul class="list-group list-group-flush">
+          <li
+            class="list-group-item button-forx"
+            #ingredient
+            *ngFor="
+              let ingredient of fridgeList.slice(0, fridgeList.length / 2);
+              let i = index
+            "
+          >
+            {{ ingredient.name }}
+            <button
+              class="btn btn-danger button-x"
+              (click)="deleteIngredientFridge(i)"
+            >
+              x
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <ul class="list-group list-group-flush">
+          <li
+            class="list-group-item button-forx"
+            #ingredient
+            *ngFor="
+              let ingredient of fridgeList.slice(fridgeList.length / 2);
+              let i = index
+            "
+          >
+            {{ ingredient.name }}
+            <button
+              class="btn btn-danger button-x"
+              (click)="deleteIngredientFridge(i + fridgeList.length / 2)"
+            >
+              x
+            </button>
+          </li>
+        </ul>
       </div>
     </div>
-    <div class="col-6">
-      <ul class="list-group list-group-flush">
-        <li
-          class="list-group-item button-forx"
-          #ingredient
-          *ngFor="
-            let ingredient of fridgeList.slice(0, fridgeList.length / 2);
-            let i = index
-          "
-        >
-          {{ ingredient.name }}
-          <button
-            class="btn btn-danger button-x"
-            (click)="deleteIngredientFridge(i)"
-          >
-            x
-          </button>
-        </li>
-      </ul>
-    </div>
-    <div class="col-6">
-      <ul class="list-group list-group-flush">
-        <li
-          class="list-group-item button-forx"
-          #ingredient
-          *ngFor="
-            let ingredient of fridgeList.slice(fridgeList.length / 2);
-            let i = index
-          "
-        >
-          {{ ingredient.name }}
-          <button
-            class="btn btn-danger button-x"
-            (click)="deleteIngredientFridge(i + fridgeList.length / 2)"
-          >
-            x
-          </button>
-        </li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-6">
-      <button
-        class="btn btn-outline-success refresh-button d-grid gap-2 col-6 mx-auto mt-2"
-        (click)="getFridgeList()"
-      >
-        Refresh Fridge
-      </button>
+    <div class="row">
+      <div class="col-6">
+        <button
+          class="btn btn-outline-success refresh-button d-grid gap-2 col-6 mx-auto mt-2"
+          (click)="getFridgeList()"
+        >
+          Refresh Fridge
+        </button>
+      </div>
+      <div class="col-6">
+        <button
+          class="btn btn-outline-success d-grid gap-2 col-6 mx-auto mt-2"
+          (click)="filterRecipes()"
+        >
+          List of recipes
+        </button>
+      </div>
     </div>
-    <div class="col-6">
-      <button
-        class="btn btn-outline-success d-grid gap-2 col-6 mx-auto mt-2"
-        (click)="filterRecipes()"
-      >
-        List of recipes
-      </button>
-    </div>
-  </div>
 
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-    <path
-      fill="#C9EFC7"
-      fill-opacity="4"
-      d="M0,160L34.3,165.3C68.6,171,137,181,206,202.7C274.3,224,343,256,411,240C480,224,549,160,617,117.3C685.7,75,754,53,823,53.3C891.4,53,960,75,1029,101.3C1097.1,128,1166,160,1234,154.7C1302.9,149,1371,107,1406,85.3L1440,64L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"
-    ></path>
-  </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#C9EFC7"
+        fill-opacity="4"
+        d="M0,160L34.3,165.3C68.6,171,137,181,206,202.7C274.3,224,343,256,411,240C480,224,549,160,617,117.3C685.7,75,754,53,823,53.3C891.4,53,960,75,1029,101.3C1097.1,128,1166,160,1234,154.7C1302.9,149,1371,107,1406,85.3L1440,64L1440,320L1405.7,320C1371.4,320,1303,320,1234,320C1165.7,320,1097,320,1029,320C960,320,891,320,823,320C754.3,320,686,320,617,320C548.6,320,480,320,411,320C342.9,320,274,320,206,320C137.1,320,69,320,34,320L0,320Z"
+      ></path>
+    </svg>
+  </div>
 </div>
