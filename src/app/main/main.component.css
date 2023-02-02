@@ -38,3 +38,21 @@ h1 {
 .card-header {
   color: #50a060;
 }
+.search-container {
+  margin-top: 20px;
+}
+.ingredient {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.ingredient-content {
+  grid-column: 1 / 2;
+}
+
+.ingredient-buttons {
+  grid-column: 2 / 3;
+  display: flex;
+  justify-content: flex-end;
+}
