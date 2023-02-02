@@ -8,6 +8,8 @@
 
 .card-header {
   text-align: center;
+  color: black;
+  font-size: 30px;
 }
 
 .ingredient {
@@ -20,7 +22,7 @@
 
 li.button-forx {
   text-align: center;
-  color: #50a060;
+  color: black;
 }
 
 .btn-logout {
@@ -28,12 +30,10 @@ li.button-forx {
 }
 
 h1 {
-  color: #50a060;
+  color: black;
+  font-size: 40px;
 }
 
-.card-header {
-  color: #50a060;
-}
 .search-container {
   margin-top: 20px;
 }
