@@ -20,9 +20,12 @@ export class DataService {
 
   registerUser(name: string, password: string, email: string) {
     fetch(`http://127.0.0.1:8000/api/emails/${email}`)
-      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        return response.json();
+      })
       .then((existingUser) => {
-        if (existingUser) {
+        if (existingUser && existingUser.email) {
           this.toastr.error('Email already exists');
         } else {
           fetch(this.db, {
@@ -139,7 +142,6 @@ export class DataService {
       }
     );
   }
-
 
   //get recipes voor based on all frigo ingredients
   recipesUser(user_id: string, list_item: string) {
