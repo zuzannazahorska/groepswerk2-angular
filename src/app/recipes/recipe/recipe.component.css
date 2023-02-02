@@ -7,11 +7,10 @@
 }
 
 span.instname {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: "Unbounded", cursive;
   font-size: 30px;
   color: black;
-  font-style: italic;
-  font-weight: 800;
+  font-weight: 700;
   margin-left: 70px;
   padding-bottom: 20px;
 }
@@ -25,10 +24,9 @@ p {
   text-align: center;
 }
 span {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 18px;
+  font-family: "Unbounded", cursive;
+  font-size: 15px;
   color: black;
-  font-style: italic;
   padding-top: 20px;
   font-size: 900;
 }
