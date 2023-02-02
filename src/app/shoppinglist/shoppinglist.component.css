@@ -1,6 +1,12 @@
-@media (max-width: 400px) {
+@media (max-width: 999px) {
+  .sl-ul {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    grid-gap: 1rem !important;
+    max-width: 60% !important;
+  }
   .sl-div-ul {
-    grid-template-columns: 1fr;
+    max-width: 80% !important;
   }
 }
 
