@@ -1,20 +1,17 @@
 <div class="container-fluid my-container-main">
   <header class="header-main">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path
-        fill="#C9EFC7"
-        fill-opacity="4"
-        d="M0,64L34.3,85.3C68.6,107,137,149,206,160C274.3,171,343,149,411,160C480,171,549,213,617,245.3C685.7,277,754,299,823,304C891.4,309,960,299,1029,261.3C1097.1,224,1166,160,1234,160C1302.9,160,1371,224,1406,256L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
-      ></path>
-    </svg>
-
     <a
       class="btn btn-outline-success"
       routerLink="/shoppinglist"
       routerLinkActive="active"
       >Go to <i class="fa-solid fa-bag-shopping"></i
     ></a>
-    <a routerLink="/recipes" routerLinkActive="active">Show all recipes</a>
+    <a
+      class="btn btn-outline-success"
+      outerLink="/recipes"
+      routerLinkActive="active"
+      >Show all recipes</a
+    >
 
     <button
       class="logout btn btn-outline-success btn-logout"
@@ -22,9 +19,19 @@
     >
       Log out
     </button>
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <path
+        fill="#C9EFC7"
+        fill-opacity="4"
+        d="M0,64L34.3,85.3C68.6,107,137,149,206,160C274.3,171,343,149,411,160C480,171,549,213,617,245.3C685.7,277,754,299,823,304C891.4,309,960,299,1029,261.3C1097.1,224,1166,160,1234,160C1302.9,160,1371,224,1406,256L1440,288L1440,0L1405.7,0C1371.4,0,1303,0,1234,0C1165.7,0,1097,0,1029,0C960,0,891,0,823,0C754.3,0,686,0,617,0C548.6,0,480,0,411,0C342.9,0,274,0,206,0C137.1,0,69,0,34,0L0,0Z"
+      ></path>
+    </svg>
   </header>
   <h1>Welcome to your fridge <img src="\assets\icon-green.png" /></h1>
   <hr />
+
+  <!-- search bar -->
 
   <div class="search-container">
     <nav class="navbar bg-body-tertiary rounded">
@@ -46,7 +53,7 @@
       </div>
     </nav>
   </div>
-
+  <!-- Result ingredient -->
   <div class="div mt-2">
     <ul class="list-group">
       <li
@@ -54,14 +61,14 @@
         *ngFor="let ingredient of ingredients"
       >
         {{ ingredient.name }}
-        <!-- Add to fridge -->
+        <!-- Add to fridge -->
         <button
           class="btn btn-outline-success"
           (click)="addToFridgeList(ingredient.id)"
         >
           <i class="gg-smart-home-refrigerator"></i>
         </button>
-        <!-- Add to shopping list -->
+        <!-- Add to shopping list -->
         <span [(ngModel)]="ingredient.id"></span
         ><button
           (click)="addToShoppingList(ingredient.id)"
@@ -73,18 +80,26 @@
     </ul>
   </div>
 
-  <!--  Fridge List -->
-  <div class="row">
-    <div class="card mt-2" style="width: 18rem">
-      <div class="card-header">Fridge list</div>
+  <!-- fridge List -->
+
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header">Fridge list</div>
+      </div>
+    </div>
+    <div class="col-6">
       <ul class="list-group list-group-flush">
         <li
           class="list-group-item button-forx"
           #ingredient
-          *ngFor="let ingredient of fridgeList; let i = index"
+          *ngFor="
+            let ingredient of fridgeList.slice(0, fridgeList.length / 2);
+            let i = index
+          "
         >
-          {{ ingredient.name
-          }}<button
+          {{ ingredient.name }}
+          <button
             class="btn btn-danger button-x"
             (click)="deleteIngredientFridge(i)"
           >
@@ -92,19 +107,48 @@
           </button>
         </li>
       </ul>
+    </div>
+    <div class="col-6">
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item button-forx"
+          #ingredient
+          *ngFor="
+            let ingredient of fridgeList.slice(fridgeList.length / 2);
+            let i = index
+          "
+        >
+          {{ ingredient.name }}
+          <button
+            class="btn btn-danger button-x"
+            (click)="deleteIngredientFridge(i + fridgeList.length / 2)"
+          >
+            x
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-6">
       <button
         class="btn btn-outline-success refresh-button d-grid gap-2 col-6 mx-auto mt-2"
         (click)="getFridgeList()"
       >
         Refresh Fridge
       </button>
-
-      <button class="btn btn-outline-dark" (click)="filterRecipes()">
+    </div>
+    <div class="col-6">
+      <button
+        class="btn btn-outline-success d-grid gap-2 col-6 mx-auto mt-2"
+        (click)="filterRecipes()"
+      >
         List of recipes
       </button>
     </div>
   </div>
+
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
     <path
       fill="#C9EFC7"
