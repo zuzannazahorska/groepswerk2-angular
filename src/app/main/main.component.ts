@@ -16,8 +16,8 @@ export class MainComponent {
   shoppingList!: number[];
   ingredientid: number = 0;
   allIngrRecipes: any;
-  list_item!: string;
-  user_id!: string;
+  list_item: string = 'fridgelist';
+  user_id: any = localStorage.getItem('userId');
 
   constructor(
     private authService: AuthService,
