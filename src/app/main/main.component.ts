@@ -92,18 +92,15 @@ export class MainComponent {
       .then((json) => console.log(json));
     this.toastr.success('Ingredient has been added!');
     this.search = '';
-    this.getFridgeList();
   }
 
-  ngOnInit() {
-    this.getFridgeList();
-  }
+  ngOnInit() {}
 
-  deleteIngredientFridge(i: number) {
-    this.fridgeList.splice(i, 1);
-    console.log(this.fridgeList);
-    this.toastr.error('Ingredient has been deleted!');
-  }
+  // deleteIngredientFridge(i: number) {
+  //   this.fridgeList.splice(i, 1);
+  //   console.log(this.fridgeList);
+  //   this.toastr.error('Ingredient has been deleted!');
+  // }
   logOut() {
     this.authService.logOut();
     this.router.navigate(['/login']);
@@ -122,5 +119,30 @@ export class MainComponent {
           this.toastr.success(`${result.length} results found`, 'Search');
         }
       });
+  }
+
+  deleteIngredientFridge(ingredient_id: number) {
+    const user_id = localStorage.getItem('userId');
+    fetch(
+      `http://127.0.0.1:8000/api/ingredient_user/${user_id}/${ingredient_id}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          user_id: user_id,
+          ingredient_id: ingredient_id,
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .then(
+        (json) =>
+          (this.fridgeList = this.fridgeList.filter(
+            (item) => item.ingredient_id !== ingredient_id
+          ))
+      );
+    this.toastr.error('Item has been deleted!');
   }
 }

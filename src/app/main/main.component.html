@@ -156,7 +156,7 @@
           {{ ingredient.name }}
           <button
             class="btn btn-danger button-x"
-            (click)="deleteIngredientFridge(i)"
+            (click)="deleteIngredientFridge(ingredient.id + i)"
           >
             x
           </button>
@@ -186,14 +186,6 @@
   </div>
 
   <div class="row">
-    <div class="col-6">
-      <button
-        class="btn btn-outline-success refresh-button d-grid gap-2 col-6 mx-auto mt-2"
-        (click)="getFridgeList()"
-      >
-        Refresh Fridge
-      </button>
-    </div>
     <div class="col-6">
       <button
         type="button"
