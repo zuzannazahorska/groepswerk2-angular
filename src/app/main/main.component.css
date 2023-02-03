@@ -80,3 +80,28 @@ h1 {
 .links a {
   margin: 0.5rem;
 }
+
+.fridge {
+  text-align: center;
+  align-items: center;
+ 
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+.clear-left {
+  clear: left;
+}
+.clear-right {
+  clear: right;
+}
+
+.fridge-list {
+  width: 70%;
+  margin: auto;
+}
