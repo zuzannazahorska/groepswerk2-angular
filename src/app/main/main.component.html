@@ -138,11 +138,62 @@
       </div>
       <div class="col-6">
         <button
+          type="button"
           class="btn btn-outline-success d-grid gap-2 col-6 mx-auto mt-2"
+          data-bs-toggle="modal"
+          data-bs-target="#exampleModal"
           (click)="filterRecipes()"
         >
           List of recipes
         </button>
+
+        <div
+          class="modal fade"
+          id="exampleModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">
+                  List of recipes
+                </h1>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+                <div class="sl-div-ul">
+                  <ul>
+                    <li>recipe1</li>
+                    <li>recipe2</li>
+
+                    <li>recipe3</li>
+                  </ul>
+                  <!-- <ul class="ul-recipe">
+                    <li *ngFor="let recipe of allIngrRecipes" class="li-recipe">
+                      <span>{{ recipe.name }}</span>
+                    </li>
+                  </ul> -->
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

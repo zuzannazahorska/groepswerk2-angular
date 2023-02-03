@@ -19,7 +19,6 @@ export class MainComponent {
   list_item!: string;
   user_id!: string;
 
-
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -111,7 +110,6 @@ export class MainComponent {
     this.router.navigate(['/login']);
   }
 
-  // search all recipes based on particular ingredients
   //search all recipes based on particular ingredients
   filterRecipes() {
     this.dataService
@@ -119,6 +117,11 @@ export class MainComponent {
       .then((result) => {
         console.log(result);
         this.allIngrRecipes = result;
+        if (result.length === 0) {
+          this.toastr.warning('No recipes found', 'Search');
+        } else {
+          this.toastr.success(`${result.length} results found`, 'Search');
+        }
       });
   }
 }
