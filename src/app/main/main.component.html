@@ -198,6 +198,62 @@
           Refresh Fridge
         </button>
       </div>
+
+    </div>
+    <div class="col-6">
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item button-forx"
+          #ingredient
+          *ngFor="
+            let ingredient of fridgeList.slice(0, fridgeList.length / 2);
+            let i = index
+          "
+        >
+          {{ ingredient.name }}
+          <button
+            class="btn btn-danger button-x"
+            (click)="deleteIngredientFridge(ingredient.id + i)"
+          >
+            x
+          </button>
+        </li>
+      </ul>
+    </div>
+    <div class="col-6">
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item button-forx"
+          #ingredient
+          *ngFor="
+            let ingredient of fridgeList.slice(fridgeList.length / 2);
+            let i = index
+          "
+        >
+          {{ ingredient.name }}
+          <button
+            class="btn btn-danger button-x"
+            (click)="deleteIngredientFridge(i + fridgeList.length / 2)"
+          >
+            x
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <button
+        type="button"
+        class="btn btn-outline-success d-grid gap-2 col-6 mx-auto mt-2"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
+        (click)="filterRecipes()"
+      >
+        List of recipes
+      </button>
+
       <div class="col-6">
         <button
           type="button"
@@ -209,6 +265,7 @@
           List of recipes
         </button>
       </div>
+
     </div>
   </div>
 
