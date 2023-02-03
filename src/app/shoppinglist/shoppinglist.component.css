@@ -10,12 +10,25 @@
   }
 }
 
+.background-pic {
+  position: relative;
+}
+
+.shoppinglist {
+  position: absolute;
+  top: 4rem;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
 .sl-div-ul {
   padding: 3rem 2rem;
   border-radius: 20px;
   background-color: darkseagreen;
   max-width: 50%;
   margin: auto;
+  margin-top: 8rem;
 }
 .btn-back {
   margin: 1.5rem 0;
@@ -38,4 +51,12 @@
   flex-grow: 1;
   text-align: left;
   padding-left: 1rem;
+}
+.links {
+  position: absolute;
+  top: 0;
+  padding: 0.8rem;
+}
+.links a {
+  margin: 0.5rem;
 }
