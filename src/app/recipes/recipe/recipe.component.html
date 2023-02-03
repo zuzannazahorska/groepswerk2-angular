@@ -1,20 +1,20 @@
 <div class="container">
   <div class="row align-items-center">
-    <div class="col">
+    <div class="col-sm-6">
       <p *ngFor="let recipe of recipeDetail">
         <span class="instname"> {{ recipe.name }}</span>
         <img class="big" [src]="recipe.image" alt="Recipe Image" />
       </p>
     </div>
-    <div class="col">
+    <div class="col-sm-6">
       <div class="detail">
         <p *ngFor="let recipe of recipeDetail">
           <span class="insttekst"> {{ recipe.instruction }}</span>
         </p>
+        <button class="btn btn-outline-success me-2" (click)="goBack()">
+          Back to Recipes
+        </button>
       </div>
-      <button class="btn btn-outline-success me-2" (click)="goBack()">
-        Back to Recipes
-      </button>
     </div>
   </div>
 </div>
