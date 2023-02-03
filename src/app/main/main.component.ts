@@ -40,7 +40,6 @@ export class MainComponent {
     });
   }
   addToFridgeList(ingredient_id: number) {
-    this.fridgeList.push(ingredient_id);
     console.log('fridgelist', this.fridgeList);
     const user_id = localStorage.getItem('userId');
     const list = 'fridgeList';
@@ -56,7 +55,7 @@ export class MainComponent {
       }),
     })
       .then((response) => response.json())
-      .then((json) => console.log(json));
+      .then((json) => this.getFridgeList());
     this.toastr.success('Ingredient has been added!');
     this.search = '';
   }
