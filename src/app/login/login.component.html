@@ -41,6 +41,7 @@
           class="form-control"
           placeholder="Password"
           [(ngModel)]="password"
+          (keydown.enter)="login()"
         />
       </div>
 

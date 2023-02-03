@@ -1,5 +1,23 @@
+/* .header-main {
+  background-image: url("/assets/wave.svg");
+  height: 300px;
+  background-repeat: no-repeat;
+} */
+
+.background-pic {
+  position: relative;
+}
+
+.links {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
 .my-container-main {
   font-family: "Unbounded", cursive;
+  padding: 0;
 }
 
 .search-button {
@@ -8,6 +26,8 @@
 
 .card-header {
   text-align: center;
+  color: black;
+  font-size: 30px;
 }
 
 .ingredient {
@@ -20,7 +40,7 @@
 
 li.button-forx {
   text-align: center;
-  color: #50a060;
+  color: black;
 }
 
 .btn-logout {
@@ -28,12 +48,10 @@ li.button-forx {
 }
 
 h1 {
-  color: #50a060;
+  color: black;
+  font-size: 40px;
 }
 
-.card-header {
-  color: #50a060;
-}
 .search-container {
   margin-top: 20px;
 }
