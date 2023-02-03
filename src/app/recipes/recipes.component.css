@@ -1,3 +1,16 @@
+.background-pic {
+  position: relative;
+}
+
+.links {
+  position: absolute;
+  top: 0;
+  padding: 0.8rem;
+}
+.cont-but {
+  position: absolute;
+  top: 7rem;
+}
 .container-input {
   display: flex;
   text-align: center;
@@ -86,19 +99,6 @@ p {
 }
 h1 {
   text-align: center;
-}
-
-.background-pic {
-  position: relative;
-}
-
-.links {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 0.8rem;
 }
 
 .links a {

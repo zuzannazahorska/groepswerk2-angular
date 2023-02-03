@@ -28,14 +28,14 @@
   background-color: darkseagreen;
   max-width: 50%;
   margin: auto;
-  margin-bottom: 2rem;
+  margin-top: 8rem;
 }
 .btn-back {
   margin: 1.5rem 0;
 }
 .sl-h1 {
   text-align: center;
-  padding: 8rem;
+  padding: 3rem;
 }
 
 .sl-ul {
@@ -55,9 +55,6 @@
 .links {
   position: absolute;
   top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
   padding: 0.8rem;
 }
 .links a {
