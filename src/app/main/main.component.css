@@ -14,6 +14,7 @@
   right: 0;
   bottom: 0;
   left: 0;
+  padding: 0.8rem;
 }
 .my-container-main {
   font-family: "Unbounded", cursive;
@@ -74,4 +75,8 @@ h1 {
   width: 500px;
   background-color: rgb(217, 242, 217);
   height: 500px;
+}
+
+.links a {
+  margin: 0.5rem;
 }
