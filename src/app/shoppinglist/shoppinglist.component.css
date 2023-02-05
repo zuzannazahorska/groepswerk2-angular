@@ -25,17 +25,22 @@
 .sl-div-ul {
   padding: 3rem 2rem;
   border-radius: 20px;
-  background-color: darkseagreen;
+  /* background-color: darkseagreen; */
+  background-color: #c9efc7;
   max-width: 50%;
-  margin: auto;
-  margin-top: 8rem;
+  margin: 8rem auto 0;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 1px 1px,
+    rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+  position: relative;
+  top: 2rem;
+  max-height: 115%;
 }
 .btn-back {
   margin: 1.5rem 0;
 }
 .sl-h1 {
   text-align: center;
-  padding: 3rem;
+  padding: 5rem;
 }
 
 .sl-ul {
@@ -43,6 +48,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
+  width: auto;
+  height: auto;
 }
 .sl-ingr {
   margin: 10px;
@@ -59,4 +66,22 @@
 }
 .links a {
   margin: 0.5rem;
+}
+.sl-empty {
+  height: 70%;
+}
+.sl-cart-icon {
+  position: relative;
+  left: 24rem;
+  bottom: 5rem;
+  width: 60%;
+}
+
+.sl-a {
+  text-decoration: none;
+  color: #198754;
+  padding: 2px;
+}
+.sl-a:hover {
+  color: #5cab86;
 }
