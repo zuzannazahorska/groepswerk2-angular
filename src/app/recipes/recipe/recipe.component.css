@@ -1,9 +1,12 @@
 .container {
-  padding-top: 50px;
+  padding-top: 30px;
   background-color: rgb(217, 242, 217);
   border-radius: 35px;
-  margin-top: 10px;
-  height: 700px;
+  margin-top: 10px !important;
+  height: auto;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-bottom: 50px;
   width: 90%;
 }
 
@@ -12,19 +15,10 @@ span.instname {
   font-size: 30px;
   color: black;
   font-weight: 700;
-  margin-left: 70px;
+
   padding-bottom: 20px;
 }
-.detail {
-  width: 100%;
 
-  justify-content: center;
-  margin-top: 50px;
-}
-p {
-  text-align: center;
-  font-size: 80%;
-}
 span {
   font-family: "Unbounded", cursive;
   font-size: 15px;
@@ -36,10 +30,21 @@ button.btn.btn-outline-success.me-2 {
   float: right;
 }
 .big {
-  height: 400px;
   border-radius: 25px;
   border: 1px solid #50a060;
   box-shadow: 0 0 15px rgb(63, 138, 78);
-  width: 100%;
+  width: 80%;
   height: auto;
+  margin-left: 30px;
+  margin-top: 30px;
+}
+span.insttekst {
+  text-align: justify;
+  font-size: 14px;
+  margin-right: 10px;
+  font-weight: 600;
+}
+.ingr {
+  font-size: 14px;
+  font-weight: 600;
 }

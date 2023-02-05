@@ -11,6 +11,7 @@ export class RecipeComponent implements OnInit {
   recipeDetail: any;
   recipe: any;
   ingredient: any;
+  recipe_id: any;
 
   constructor(
     private route: ActivatedRoute,

@@ -1,20 +1,29 @@
-<div class="container">
-  <div class="row align-items-center">
-    <div class="col-sm-6">
-      <p *ngFor="let recipe of recipeDetail">
-        <span class="instname"> {{ recipe.name }}</span>
-        <img class="big" [src]="recipe.image" alt="Recipe Image" />
-      </p>
-    </div>
-    <div class="col-sm-6">
-      <div class="detail">
-        <p *ngFor="let recipe of recipeDetail">
-          <span class="insttekst"> {{ recipe.instruction }}</span>
+<div class="container m-10">
+  <div class="row">
+    <div class="col-sm-5 text-center">
+      <div *ngIf="recipeDetail">
+        <p>
+          <span class="instname"> {{ recipeDetail.recipe_name }}</span>
         </p>
-        <button class="btn btn-outline-success me-2" (click)="goBack()">
-          Back to Recipes
-        </button>
+        <img class="big" [src]="recipeDetail.recipe_image" alt="Recipe Image" />
       </div>
+    </div>
+
+    <div class="col-sm-7 mt-3">
+      <div class="ingr pt-5">
+        <ul>
+          <li *ngFor="let ingredient of recipeDetail.ingredients">
+            {{ ingredient }}
+          </li>
+        </ul>
+      </div>
+
+      <p>
+        <span class="insttekst">{{ recipeDetail.recipe_instruction }}</span>
+      </p>
+      <button class="btn btn-outline-success me-2" (click)="goBack()">
+        Back to Recipes
+      </button>
     </div>
   </div>
 </div>
