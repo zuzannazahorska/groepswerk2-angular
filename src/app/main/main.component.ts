@@ -94,7 +94,9 @@ export class MainComponent {
     this.search = '';
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getFridgeList();
+  }
 
   // deleteIngredientFridge(i: number) {
   //   this.fridgeList.splice(i, 1);
@@ -122,9 +124,12 @@ export class MainComponent {
   }
 
   deleteIngredientFridge(ingredient_id: number) {
+    console.log(ingredient_id);
+    console.log('hellow');
     const user_id = localStorage.getItem('userId');
+    const list = 'fridgeList';
     fetch(
-      `http://127.0.0.1:8000/api/ingredient_user/${user_id}/${ingredient_id}`,
+      `http://127.0.0.1:8000/api/ingredient_user/${user_id}/${ingredient_id}/${list}`,
       {
         method: 'DELETE',
         headers: {
@@ -133,16 +138,12 @@ export class MainComponent {
         body: JSON.stringify({
           user_id: user_id,
           ingredient_id: ingredient_id,
+          list: list,
         }),
       }
     )
-      .then((response) => response.json())
-      .then(
-        (json) =>
-          (this.fridgeList = this.fridgeList.filter(
-            (item) => item.ingredient_id !== ingredient_id
-          ))
-      );
+      .then((response) => console.log(response))
+      .then((json) => this.getFridgeList());
     this.toastr.error('Item has been deleted!');
   }
 }

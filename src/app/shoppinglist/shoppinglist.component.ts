@@ -15,8 +15,9 @@ export class ShoppinglistComponent implements OnInit {
 
   deleteIngredientFromShoppingList(ingredient_id: number) {
     const user_id = localStorage.getItem('userId');
+    const list = 'shoppinglist';
     fetch(
-      `http://127.0.0.1:8000/api/ingredient_user/${user_id}/${ingredient_id}`,
+      `http://127.0.0.1:8000/api/ingredient_user/${user_id}/${ingredient_id}/${list}`,
       {
         method: 'DELETE',
         headers: {
@@ -25,6 +26,7 @@ export class ShoppinglistComponent implements OnInit {
         body: JSON.stringify({
           user_id: user_id,
           ingredient_id: ingredient_id,
+          list: list,
         }),
       }
     )
