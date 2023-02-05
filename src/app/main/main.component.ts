@@ -40,9 +40,10 @@ export class MainComponent {
     });
   }
   addToFridgeList(ingredient_id: number) {
-    console.log('fridgelist', this.fridgeList);
+    console.log(this.ingredients[0].name);
     const user_id = localStorage.getItem('userId');
     const list = 'fridgeList';
+
     fetch('http://127.0.0.1:8000/api/ingredient_user', {
       method: 'POST',
       headers: {
@@ -54,9 +55,24 @@ export class MainComponent {
         list: list,
       }),
     })
-      .then((response) => response.json())
-      .then((json) => this.getFridgeList());
-    this.toastr.success('Ingredient has been added!');
+      .then((response) => {
+        if (response.status === 400) {
+          return response.json().then((error) => {
+            this.toastr.error(
+              `You already have ${this.ingredients[0].name} in your Freego!`
+            );
+            return response.json();
+          });
+        }
+        return response.json();
+      })
+
+      .then((json) => {
+        this.toastr.success(
+          `${this.ingredients[0].name} has been added to your Freego!`
+        );
+        this.getFridgeList();
+      });
     this.search = '';
   }
 
@@ -74,9 +90,9 @@ export class MainComponent {
   }
 
   addToShoppingList(ingredient_id: number) {
-    this.shoppingList.push(ingredient_id);
     const user_id = localStorage.getItem('userId');
     const list = 'shoppinglist';
+
     fetch('http://127.0.0.1:8000/api/ingredient_user', {
       method: 'POST',
       headers: {
@@ -88,9 +104,24 @@ export class MainComponent {
         list: list,
       }),
     })
-      .then((response) => response.json())
-      .then((json) => console.log(json));
-    this.toastr.success('Ingredient has been added!');
+      .then((response) => {
+        if (response.status === 400) {
+          return response.json().then((error) => {
+            this.toastr.error(
+              `You already have ${this.ingredients[0].name} in your Freego!`
+            );
+            return response.json();
+          });
+        }
+        return response.json();
+      })
+
+      .then((json) => {
+        this.toastr.success(
+          `${this.ingredients[0].name} has been added to your Freego!`
+        );
+        this.getFridgeList();
+      });
     this.search = '';
   }
 
