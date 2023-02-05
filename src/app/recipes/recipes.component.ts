@@ -33,8 +33,7 @@ export class RecipesComponent {
   name: any | string;
   diets: any;
   allIngrRecipes: any;
-  user_id!: string;
-  list_item!: string;
+  recipe_id: any;
 
   constructor(
     private dataService: DataService,
@@ -60,6 +59,16 @@ export class RecipesComponent {
     });
   }
   // show instruction of recipe
+  // showInst(id: string) {
+  //   console.log(id);
+  //   this.dataService.getRecipeDetail(id).then((result) => {
+  //     console.log(result);
+  //     this.recipeDetail = result;
+  //     this.router.navigate(['/recipe', id]);
+  //   });
+  // }
+
+  // show instruction of recipe
   showInst(id: string) {
     console.log(id);
     this.dataService.getRecipeDetail(id).then((result) => {
@@ -68,6 +77,7 @@ export class RecipesComponent {
       this.router.navigate(['/recipe', id]);
     });
   }
+
   // search all recipes based on particular ingredient
   searchRecipesIngr() {
     this.dataService.getIngrRecipeFromApi(this.search).then((result) => {

@@ -85,13 +85,21 @@ export class DataService {
   }
 
   //get instruction from recipe
-  getRecipeDetail(id: string) {
-    return fetch('http://127.0.0.1:8000/api/recipes/instructions/' + id).then(
-      (response) => {
-        console.log(response);
-        return response.json();
-      }
-    );
+  // getRecipeDetail(id: string) {
+  //   return fetch('http://127.0.0.1:8000/api/recipes/instructions/' + id).then(
+  //     (response) => {
+  //       console.log(response);
+  //       return response.json();
+  //     }
+  //   );
+  // }
+
+  //get instruction from recipe
+  getRecipeDetail(id: any) {
+    return fetch('http://127.0.0.1:8000/api/ingr/' + id).then((response) => {
+      console.log(response);
+      return response.json();
+    });
   }
 
   getIngredientsFromApi(search: any) {
