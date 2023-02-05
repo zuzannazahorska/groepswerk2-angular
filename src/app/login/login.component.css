@@ -7,6 +7,7 @@
   margin: auto;
   width: 50%;
   text-align: center;
+  margin-top: 5rem;
 }
 
 .header {
@@ -23,4 +24,21 @@ h1.main {
 
 .login-button {
   display: flex;
+}
+.Icon-inside {
+  position: relative;
+}
+
+.Icon-inside i {
+  position: absolute;
+  left: 20px;
+  top: 10px;
+  padding: 10px 10px;
+}
+input {
+  width: 100%;
+  padding: 15px;
+  margin: 4px;
+  box-sizing: border-box;
+  padding-left: 60px;
 }
