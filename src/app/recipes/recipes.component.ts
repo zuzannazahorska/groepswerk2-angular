@@ -78,9 +78,9 @@ export class RecipesComponent {
     });
   }
 
-  // search all recipes based on particular ingredient
-  searchRecipesIngr() {
-    this.dataService.getIngrRecipeFromApi(this.search).then((result) => {
+  // search recipe
+  searchRecipeName() {
+    this.dataService.searchRecipe(this.search).then((result) => {
       console.log(result);
       this.ingrRecipes = result;
       this.router.navigate(['/search', this.search]);
@@ -92,7 +92,7 @@ export class RecipesComponent {
       this.search = '';
     });
   }
-  //receive prescriptions based on a particular diet
+  //receive recipes based on a particular diet
   filterDiet(id: string) {
     this.dataService.getDiet(id).then((result) => {
       console.log(result);

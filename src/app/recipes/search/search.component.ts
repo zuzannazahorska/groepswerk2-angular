@@ -19,7 +19,7 @@ export class SearchComponent {
   ngOnInit() {
     this.route.params.subscribe((params) => {
       let name = params['name'];
-      this.dataService.getIngrRecipeFromApi(name).then((result) => {
+      this.dataService.searchRecipe(name).then((result) => {
         console.log(result);
         this.ingrRecipes = result;
       });
