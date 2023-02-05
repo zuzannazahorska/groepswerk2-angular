@@ -32,7 +32,7 @@ export class ShoppinglistComponent implements OnInit {
     )
       .then((response) => response.json())
       .then((json) => this.getShoppingList());
-    this.toastr.success('Item has been deleted!');
+    this.toastr.error('Item has been deleted!');
   }
 
   ngOnInit() {
