@@ -10,17 +10,18 @@
 </header>
 
 <div class="container-content m-5">
+  <!-- {{ filteredRecipes | json }} -->
   <ul>
     <li *ngFor="let recipe of filteredRecipes">
       <img class="small" [src]="recipe.image" alt="Recipe Image" />
 
       <p>{{ recipe.name }}</p>
 
-      <!-- <a
+      <a
         class="btn btn-outline-success m-1"
         [routerLink]="['/recipes', recipe.id]"
         >Show instruction</a
-      > -->
+      >
     </li>
   </ul>
 </div>
