@@ -1,5 +1,8 @@
 .background-pic {
-  position: relative;
+  width: 100%;
+}
+svg.background-pic {
+  position: fixed;
 }
 
 .links {
