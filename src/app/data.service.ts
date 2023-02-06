@@ -110,17 +110,6 @@ export class DataService {
     return this.fridgeList;
   }
 
-  // get recipes based on a specific diet
-
-  getDietFromApi(search: string) {
-    return fetch('http://127.0.0.1:8000/api/diet_recipe/' + search).then(
-      (response) => {
-        console.log(response);
-        return response.json();
-      }
-    );
-  }
-
   //search recipe
   searchRecipe(search: string) {
     return fetch('http://127.0.0.1:8000/api/recipes/' + search).then(
