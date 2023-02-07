@@ -1,9 +1,114 @@
-/* .header-main {
-  background-image: url("/assets/wave.svg");
-  height: 300px;
-  background-repeat: no-repeat;
-} */
+@media (max-device-width: 559px) {
+  h1 {
+    font-size: 1rem;
+  }
+  .welcome-h1 {
+    font-size: 10px;
+    position: relative;
+    bottom: 3rem;
+    height: 10rem;
+    text-align: center;
+  }
+  .freego-icon {
+    visibility: hidden;
+  }
+  .links {
+    position: absolute;
+    top: 0;
+    padding: 0.8rem;
+    display: flex;
+    align-items: baseline;
+    height: 70%;
+  }
+  .fridge-content {
+    background-image: url("src/assets/bok-choy.jpg");
+    background-size: cover;
+    padding: 4rem;
+    border-radius: 0px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+}
+@media (min-device-width: 560px) and (max-device-width: 767px) {
+  .fridge-content {
+    background-image: url("src/assets/bok-choy.jpg");
+    background-size: cover;
+    padding: 4rem;
+    border-radius: 0px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
 
+  .search-ingr {
+    display: flex;
+    margin: 0 1rem;
+    padding: 4rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .input-search {
+    width: 15rem;
+    text-align: center;
+  }
+  .welcome-h1 {
+    position: relative;
+    bottom: 6rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .links {
+    position: absolute;
+    top: 0;
+    padding: 0.8rem;
+    display: flex;
+    align-items: baseline;
+    height: 70%;
+  }
+
+  .links a,
+  button {
+    margin: 0.5rem;
+  }
+
+  .freego-icon {
+    visibility: hidden;
+  }
+}
+
+@media (min-device-width: 768px) {
+  .fridge-content {
+    background-image: url("src/assets/bok-choy.jpg");
+    background-size: cover;
+    background-image: url("src/assets/bok-choy.jpg");
+    background-size: cover;
+    padding: 4rem;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+  }
+  .input-search {
+    width: 30rem;
+    text-align: center;
+  }
+  .welcome-h1 {
+    position: relative;
+    bottom: 10rem;
+    display: flex;
+    justify-content: center;
+  }
+  .links {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.8rem;
+  }
+}
 * {
   color: #32373b;
 }
@@ -11,14 +116,6 @@
   position: relative;
 }
 
-.links {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 0.8rem;
-}
 .my-container-main {
   font-family: "Unbounded", cursive;
   padding: 0;
@@ -47,15 +144,6 @@ li.button-forx {
   color: black;
 }
 
-.btn-logout {
-  float: right;
-}
-
-h1 {
-  color: black;
-  font-size: 40px;
-}
-
 .ingredient {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -75,10 +163,6 @@ h1 {
   width: 500px;
   background-color: rgb(217, 242, 217);
   height: 500px;
-}
-
-.links a {
-  margin: 0.5rem;
 }
 
 .fridge {
@@ -114,11 +198,6 @@ h1 {
   padding: 3rem; */
 }
 
-.input-search {
-  width: 70%;
-  text-align: center;
-}
-
 .search-ingr {
   display: flex;
   justify-content: center;
@@ -135,7 +214,7 @@ h1 {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  font-size: 5rem;
+  font-size: 3rem;
 }
 
 .buttons {
@@ -154,14 +233,6 @@ h1 {
   margin: 5px 2px;
   justify-content: center;
   align-items: center;
-}
-
-.fridge-content {
-  background-image: url("src/assets/bok-choy.jpg");
-  background-size: cover;
-  padding: 4rem;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
 }
 
 .search-frigo {
@@ -194,4 +265,8 @@ ul.list-group.list-group-flush {
 /* Show the tooltip text when you mouse over the tooltip container */
 .tooltip:hover .tooltiptext {
   visibility: visible;
+}
+
+.recipe-list-btn {
+  background-color: #8eedcd;
 }
