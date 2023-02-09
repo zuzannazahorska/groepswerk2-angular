@@ -70,12 +70,6 @@
 .sl-empty {
   height: 70%;
 }
-.sl-cart-icon {
-  position: relative;
-  left: 20rem;
-  bottom: 5rem;
-  width: 60%;
-}
 
 .sl-a {
   text-decoration: none;
@@ -84,4 +78,12 @@
 }
 .sl-a:hover {
   color: #5cab86;
+}
+
+.basket-image {
+  max-width: 40%;
+  max-height: 9%;
+  position: relative;
+  left: 25rem;
+  bottom: 4rem;
 }
