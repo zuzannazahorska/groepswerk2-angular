@@ -1,27 +1,29 @@
-# Groepswerk2Angular
+## **Freego**
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.
+Freego is a web application that:
 
-## Development server
+-   commits to zero waste lifestyle
+-   allows the user to create the “Freego list” by searching the ingredients/products which they already have at home and adding them to the user's list
+-   creates a personalized shopping list
+-   generates a list of recipes that can be prepared based on the products in the user's refrigerator list
+-   allows access to full recipes from a list of generated recipes and the ability to search for additional recipes or filter recipes based on a specific diet
+-   allows user registration through a form requiring a name (nickname), email address and password, with the information stored securely in a database
+-   secures user login using a previously set alias and password
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Tools
 
-## Code scaffolding
+To reach our goal, we used the following tools:
+-   HTML
+-   CSS and Bootstrap
+-   JavaScript
+-   PHP
+-   Angular
+-   Laravel
+-   TablePlus
+-   Insomnia
+-   Local storage
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Developers
+- Mariandrea Villalobos
+- Olena Dubovets
+- Zuzanna Zahorska
